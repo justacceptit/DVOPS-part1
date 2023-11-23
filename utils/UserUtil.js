@@ -26,14 +26,13 @@ async function writeJSON(object, filename) {
 async function register(req, res) {
   try {
     const fullname = req.body.fullname;
-    const employeeid = req.body.employeeid;
     const password = req.body.password;
 
     // Validation checks
-    if (fullname.length < 3 || !employeeid.includes('#') || password.length < 6) {
+    if (fullname.length < 3 || password.length < 6) {
       return res.status(500).json({ message: 'Validation error' });
     } else {
-      const newUser = new User(fullname, employeeid, password);
+      const newUser = new User(fullname, password);
       const updatedUsers = await writeJSON(newUser, 'utils/users.json');
       return res.status(201).json(updatedUsers);
     }
@@ -47,3 +46,4 @@ module.exports = {
   writeJSON,
   register
 };
+
