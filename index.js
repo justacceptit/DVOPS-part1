@@ -6,12 +6,6 @@ var startPage = "index.html";
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("./public"));
-const{addProfile}=require('./utils/EmployeeUtil')
-app.post('/add-profile',addProfile);
-const{editProfile}=require('./utils/EditProfile')
-app.put('/edit-profile/:id',editProfile);
-const{getProfile}=require('./utils/GetProfile')
-app.get('/get-profile',getProfile);
 app.get('/', (req, res) => {
 res.sendFile(__dirname + "/public/" + startPage);
 })
