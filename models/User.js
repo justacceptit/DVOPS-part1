@@ -1,14 +1,10 @@
+// Credentials required of a user that must be provided 
+
 
 class User {
-    constructor(name, password) {
-        this.name = name;
+    constructor(fullname, password) {
+        this.fullname = fullname;
         this.password = password;
-        this.time_in="";
-
-
-
-
-
     }
 }
 
