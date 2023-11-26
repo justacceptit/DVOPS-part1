@@ -9,12 +9,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("./public"));
 
-const { deleteUser, register, login } = require('./utils/UserUtil');
+
+const { deleteUser, register, login, updateUserTime } = require('./utils/UserUtil');
 
 // Define routes
 app.delete('/delete-user/:id', deleteUser);
 app.post('/register', register);
 app.post('/login', login);
+app.put('/update-user-time/:id', updateUserTime);
+
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/public/" + startPage);
