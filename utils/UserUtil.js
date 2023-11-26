@@ -33,8 +33,15 @@ async function updateUserTime(req, res) {
         const userIndex = allUsers.findIndex(user => user.id == id);
 
         if (userIndex !== -1) {
+            const user = allUsers[userIndex];
+
+            // Check if the user has already timed in
+            if (user.time) {
+                return res.status(400).json({ message: 'User already timed in!' });
+            }
+
             // Update the "time" property to the current time
-            allUsers[userIndex].time = new Date().toLocaleTimeString();
+            user.time = new Date().toISOString();
 
             // Save the updated users array to the file
             await fs.writeFile('utils/users.json', JSON.stringify(allUsers), 'utf8');
@@ -47,6 +54,7 @@ async function updateUserTime(req, res) {
         return res.status(500).json({ message: error.message });
     }
 }
+
 module.exports = {
     readJSON,updateUserTime
 };

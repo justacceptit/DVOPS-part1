@@ -14,12 +14,15 @@ function updateUserTime(selectedId) {
         if (response.message == "User time updated successfully!") {
             // Handle success, maybe redirect or display a message
         }
+        else if (response.message == "User already timed in!") {
+            // Handle case where the user has already timed in
+            alert('You have already timed in!');
+        }
         else {
-            // Handle error, maybe show an alert
+            // Handle other errors, maybe show an alert
             console.error('Unable to update user time!');
         }
     };
 
     request.send();
 }
-
