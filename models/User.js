@@ -5,6 +5,10 @@ class User {
         this.password = password;
         this.time_in="";
 
+        this.level=level;
+        this.date=new Date().toLocaleDateString();
+
+
 
 
 
