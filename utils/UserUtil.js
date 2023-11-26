@@ -22,14 +22,16 @@ async function writeJSON(object, filename) {
     throw err;
   }
 }
-
+// Validation checks for register
 async function register(req, res) {
   try {
-    const fullname = req.body.fullname;
-    const password = req.body.password;
+    const fullname = req.body.fullname; // Full Name required
+    const password = req.body.password; // Password required
+
 
     // Validation checks done for registration
     if (fullname.length < 3 || password.length < 6 ) { // Full Name must be more than 3 characters long, Password must be more than 6 characters
+
       return res.status(500).json({ message: 'Validation error' });
     } else {
       const newUser = new User(fullname, password);
