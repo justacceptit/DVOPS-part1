@@ -13,6 +13,9 @@
     "utils/EndOfDay.js",
     "utils/GetProfile.js",
     "utils/EditProfile.js"
+    "tests/deleteUser.test.js",
+    "tests/timeIn.test.js"
+
 
 
     ],
@@ -29,9 +32,9 @@
     },
   "scripts": {
 
-
-
     "test": "nyc mocha tests/*.test.js"
+
+
 
 
   },

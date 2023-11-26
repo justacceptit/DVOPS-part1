@@ -73,32 +73,42 @@ async function login(req, res) {
 }
 
 async function deleteUser(req, res) {
-  try {
-    const id = req.params.id;
-
-    const allUsers = await readJSON('utils/users.json');
-
-    var index = -1;
-
-    for (var i = 0; i < allUsers.length; i++) {
-      var currUser = allUsers[i];
-      if (currUser.id == id)
-        index = i;
+    try {
+      const id = req.params.id;
+  
+      const allUsers = await readJSON('utils/users.json');
+  
+      const userIndex = allUsers.findIndex(user => user.id == id);
+  
+      if (userIndex !== -1) {
+        const userToDelete = allUsers[userIndex];
+  
+        // Check if the user has "level" as "2"
+        if (userToDelete.level === '2') {
+          const usersWithLevel2 = allUsers.filter(user => user.level === '2');
+  
+          // Check if the user to be deleted is the last user with "level" as "2"
+          if (usersWithLevel2.length === 1 && usersWithLevel2[0].id === userToDelete.id) {
+            return res.status(400).json({ message: 'Cannot delete the last user with level 2!' });
+          }
+        }
+  
+        allUsers.splice(userIndex, 1);
+        await fs.writeFile('utils/users.json', JSON.stringify(allUsers), 'utf8');
+        return res.status(201).json({ message: 'User deleted successfully!' });
+      } else {
+        return res.status(404).json({ message: 'User not found!' });
+      }
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
     }
-
-    if (index != -1) {
-      allUsers.splice(index, 1);
-      await fs.writeFile('utils/users.json', JSON.stringify(allUsers), 'utf8');
-      return res.status(201).json({ message: 'User deleted successfully!' });
-    } else {
-      return res.status(500).json({ message: 'Error occurred, unable to delete!' });
-    }
-  } catch (error) {
-    return res.status(500).json({ message: error.message });
   }
-}
+  
+  
 
-async function updateUserTime(req, res) {
+  
+
+  async function updateUserTime(req, res) {
     try {
         const id = req.params.id;
 
@@ -110,12 +120,12 @@ async function updateUserTime(req, res) {
             const user = allUsers[userIndex];
 
             // Check if the user has already timed in
-            if (user.time) {
+            if (user.time_in) {
                 return res.status(400).json({ message: 'User already timed in!' });
             }
 
             // Update the "time" property to the current time
-            user.time = new Date().toLocaleTimeString();
+            user.time_in = new Date().toLocaleTimeString();
 
             // Save the updated users array to the file
             await fs.writeFile('utils/users.json', JSON.stringify(allUsers), 'utf8');
