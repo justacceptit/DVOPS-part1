@@ -32,7 +32,7 @@ async function register(req, res) {
       const level=req.body.level;
       const time_in=req.body.time_in;
       const date=req.body.date;
-  if (name.length < 3 || password.length < 6) {
+  if (name.length < 3 || password.length < 6 || name.includes('@') || name.includes('#')) {
   return res.status(500).json({ message: 'Validation error' });
   } else {
   const newUser = new User(name, password,level,time_in,date);
