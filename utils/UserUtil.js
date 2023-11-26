@@ -28,12 +28,12 @@ async function register(req, res) {
   try {
     const name = req.body.name; // Renamed from fullname to name
     const password = req.body.password; // Password required
-
+    const level = req.body.level;
     // Validation checks done for registration
     if (name.length < 3 || password.length < 6) {
       // Name must be more than 3 characters long, Password must be more than 6 characters
       return res.status(500).json({ message: 'Validation error' });
-    } else {
+    }   else {
       const newUser = new User(name, password); // Renamed from fullname to name
       const updatedUsers = await writeJSON(newUser, 'utils/users.json');
       return res.status(201).json(updatedUsers);
