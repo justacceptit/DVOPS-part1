@@ -8,8 +8,6 @@ app.use(bodyParser.json());
 app.use(express.static("./public"));
 const{addProfile}=require('./utils/EmployeeUtil')
 app.post('/add-profile',addProfile);
-const{editProfile}=require('./utils/EditProfile')
-app.put('/edit-profile/:id',editProfile);
 const{getProfile}=require('./utils/GetProfile')
 app.get('/get-profile',getProfile);
 const{DayIn}=require('./utils/TimeIn')
