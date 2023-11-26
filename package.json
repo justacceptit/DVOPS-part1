@@ -5,7 +5,10 @@
   "main": "index.js",
   "nyc": {
     "include": [
-    "utils/UserUtil.js"
+    "utils/UserUtil.js",
+    "tests/deleteUser.test.js",
+    "tests/timeIn.test.js"
+
     
     ],
     "exclude": [],
