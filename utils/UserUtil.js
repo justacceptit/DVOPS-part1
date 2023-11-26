@@ -48,5 +48,5 @@ async function updateUserTime(req, res) {
     }
 }
 module.exports = {
-    deleteUser,readJSON,updateUserTime
+    readJSON,updateUserTime
 };
