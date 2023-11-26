@@ -19,14 +19,23 @@ const { EndOfDay } = require('./utils/EndOfDay');
 app.put('/eod',EndOfDay);
 =======
 
-const { register, login } = require('./utils/UserUtil')
+
+const { deleteUser, register, login, updateUserTime } = require('./utils/UserUtil');
+
+// Define routes
+app.delete('/delete-user/:id', deleteUser);
 app.post('/register', register);
 app.post('/login', login);
+app.put('/update-user-time/:id', updateUserTime);
+
 
 >>>>>>> main
 app.get('/', (req, res) => {
-res.sendFile(__dirname + "/public/" + startPage);
-})
+    res.sendFile(__dirname + "/public/" + startPage);
+});
 
-app.listen(PORT, function () {
-console.log(`Demo project at: ${PORT}!`); });
+const server = app.listen(PORT, function () {
+    console.log(`Demo project at: ${PORT}!`);
+});
+
+module.exports = { app, server };

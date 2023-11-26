@@ -1,7 +1,14 @@
+
 class User {
-    constructor(fullname, password) {
-        this.fullname = fullname;
+    constructor(name, password) {
+        this.name = name;
         this.password = password;
+        this.time_in="";
+
+
+
+
+
     }
 }
 
