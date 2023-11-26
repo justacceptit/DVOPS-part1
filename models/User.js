@@ -1,13 +1,13 @@
 class User {
-    constructor(name, location, description, owner) {
+    constructor(name, password) {
         this.name = name;
-        this.location = location;
-        this.description = description;
-        this.owner = owner;
+        this.password = password;
+        this.time_in="";
 
 
-        const random = Math.floor(Math.random() * 1000);
-        this.id = timestamp + "" + random.toString().padStart(3, '0');
+
+
+
     }
 }
 
