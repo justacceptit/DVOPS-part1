@@ -7,15 +7,14 @@ async function addProfile(req,res){
     const name=req.body.name;
     const password=req.body.password;
     const level=req.body.level;
-    const month=req.body.month;
     const date=req.body.date;
     const time_in=req.body.time_in;
-    if(name.length = 0 ){
+    if(name.length == 0 ){
         return res.status(500).json({message:'Please include a name.'});
     }else if(level=='0'){
         return res.status(500).json({message:'level not indicated'});
-    }else if(password.length=0){
-        return res.status(500).json({message:'Please include a password'});
+    }else if(password.length<= 6){
+        return res.status(500).json({message:'Password length less than 6'});
 
     }else{
         const newEmployee =new Employee(name,password,level,date,time_in);

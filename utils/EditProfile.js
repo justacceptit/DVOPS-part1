@@ -17,7 +17,7 @@ async function editProfile(req,res){
         var curcurrProfile =allProfile[i];
         if(curcurrProfile.id==id){
             
-            allProfile[i].name=name;
+            allProfile[i].fullname=name;
             allProfile[i].password=password;
             allProfile[i].level=level;
             allProfile[i].time_in=time_in;
