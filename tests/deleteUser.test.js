@@ -4,7 +4,7 @@ const assert = require('assert');
 const chai = require('chai');
 const expect = chai.expect;
 
-describe('deleteUser', function () {
+describe('Testing Delete User function', function () {
   // Create a temporary copy of the users.json file for testing
   const testUsersFilePath = 'utils/test-users.json';
 
