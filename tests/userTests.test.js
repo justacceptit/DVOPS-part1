@@ -149,7 +149,7 @@ it('Should show invalid credentials, wrong name given', async () => {
 
         const req = {
         body: {
-        name: 'john',
+        name: 'lol',
         password: orgContent[0].password,
         },
         };
