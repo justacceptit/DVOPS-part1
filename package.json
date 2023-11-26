@@ -5,11 +5,19 @@
   "main": "index.js",
   "nyc": {
     "include": [
+
     "utils/UserUtil.js",
+    "tests/userTests.test.js",
+    "models/User.js",
+    "utils/users.json"
+    "utils/EndOfDay.js",
+    "utils/GetProfile.js",
+    "utils/EditProfile.js"
     "tests/deleteUser.test.js",
     "tests/timeIn.test.js"
 
-    
+
+
     ],
     "exclude": [],
     "reporter": [
@@ -23,7 +31,12 @@
     "statements": 80
     },
   "scripts": {
+
     "test": "nyc mocha tests/*.test.js"
+
+
+
+
   },
   "author": "",
   "license": "ISC",
