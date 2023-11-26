@@ -13,7 +13,6 @@ app.use(express.static("./public"));
 const { deleteUser, updateUserTime } = require('./utils/UserUtil')
 
 // Define routes
-app.delete('/delete-user/:id', deleteUser);
 app.put('/update-user-time/:id', updateUserTime);
 
 app.get('/', (req, res) => {
