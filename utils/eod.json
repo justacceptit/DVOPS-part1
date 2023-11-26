@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-[{"name":"ryan","password":"ryan","id":"1696163580475820","time":""},{"name":"Peter Lim","password":"123456","id":"1","time":"6:40:37 pm","date":"26/11/2023"}]
-=======
-[{"name":"micheal dont leave me here","password":"1234556","level":"1","time_in":"4:25:46 pm","date":"26/11/2023"},{"name":"wooow","password":"1234556","level":"1","time_in":"4:25:58 pm","date":"26/11/2023","id":"967"},{"name":"micheal jackson","password":"1234556","level":"1","time_in":"4:26:07 pm","date":"26/11/2023","id":"884"},{"name":"jax","password":"1234556","level":"1","time_in":"4:26:13 pm","date":"26/11/2023","id":"282"}]
->>>>>>> e61c8e8d2efd4996d6e266d2bc664116e35fd788
+[{"name":"ryan","password":"ryan","id":"1696163580475820","time":""},{"name":"Peter Lim","password":"123456","id":"1","time":"6:40:37 pm","date":"26/11/2023","level":"2","time_in":"8:00:00 pm"}]
