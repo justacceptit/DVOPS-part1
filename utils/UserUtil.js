@@ -28,7 +28,7 @@ async function register(req, res) {
     const fullname = req.body.fullname;
     const password = req.body.password;
 
-    // Validation checks
+    // Validation checks done for registration
     if (fullname.length < 3 || password.length < 6 ) {
       return res.status(500).json({ message: 'Validation error' });
     } else {
@@ -40,7 +40,7 @@ async function register(req, res) {
     return res.status(500).json({ message: error.message });
   }
 }
-
+  // Validation checks done for login
 async function login(req, res) {
   try {
   const fullname = req.body.fullname;
