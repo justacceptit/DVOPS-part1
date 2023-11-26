@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const { updateUserTime, readJSON } = require('../utils/UserUtil'); // Adjust the path as needed
 const { expect } = require('chai');
 
-describe('User Util', function () {
+describe('Time In', function () {
     // Create a temporary copy of the users.json file for testing
     const testUsersFilePath = 'utils/test-users.json';
   
