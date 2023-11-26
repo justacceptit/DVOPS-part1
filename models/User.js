@@ -4,6 +4,8 @@ class User {
         this.name = name;
         this.password = password;
         this.time_in="";
+        this.level=level;
+        this.date=new Date().toLocaleDateString();
 
 
 
