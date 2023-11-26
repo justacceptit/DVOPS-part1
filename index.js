@@ -10,11 +10,10 @@ app.use(bodyParser.json());
 app.use(express.static("./public"));
 
 // Import your UserUtil module
-const { deleteUser, updateUserTime } = require('./utils/UserUtil')
+const { deleteUser} = require('./utils/UserUtil')
 
 // Define routes
 app.delete('/delete-user/:id', deleteUser);
-app.put('/update-user-time/:id', updateUserTime);
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/public/" + startPage);
