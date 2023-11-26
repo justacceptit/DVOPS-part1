@@ -37,7 +37,8 @@ it('Should register a new user successfully', async () => {
 await fs.writeFile(usersFilePath, JSON.stringify(orgContent), 'utf8');
 });
 
-it('Should shows validation error due to name', async () => {
+
+it('Should show validation error due to name length', async () => {
     const req = {
     body: {
     name: 'AJ',
@@ -93,11 +94,13 @@ it('Should shows validation error due to password length', async () => {
             await register(req, res);
             });
         
-        it('Should show validation error for registering invalid ', async () => {
+
+        it('Should show validation error for registering with invalid characters ', async () => {
                 const req = {
                 body: {
-                name: 'Janeii',
-                password: '12345678',
+                name: 'D@niel',
+                password: '123456',
+
                 },
                 };
                 const res = {
@@ -142,7 +145,8 @@ it('Should login successfully', async () => {
     await login(req, res);
     });
 
-it('Should shows invalid credentials, wrong name given', async () => {
+it('Should show invalid credentials, wrong name given', async () => {
+
         const req = {
         body: {
         name: 'john',
@@ -161,7 +165,9 @@ it('Should shows invalid credentials, wrong name given', async () => {
         await login(req, res);
         });
 
-it('Should shows invalid credentials, wrong password given', async () => {
+
+it('Should show invalid credentials, wrong password given', async () => {
+
             const req = {
             body: {
             name: orgContent[0].name,
@@ -180,7 +186,9 @@ it('Should shows invalid credentials, wrong password given', async () => {
             await login(req, res);
             });  
             
-            it('Should shows invalid credentials, wrong name and wrong password given', async () => {
+
+it('Should show invalid credentials, wrong name and wrong password given', async () => {
+
                 const req = {
                 body: {
                 name: 'Jack Tan',
@@ -198,4 +206,6 @@ it('Should shows invalid credentials, wrong password given', async () => {
                 };
                 await login(req, res);
                 });  
+
 });
+
