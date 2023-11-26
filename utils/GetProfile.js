@@ -4,10 +4,10 @@ const fs =require('fs').promises;
 async function getProfile(req,res){
     try{
         const allProfile = await readJSON('utils/users.json');
-        return res.status(201).json({allProfile});
+        return res.status(201).json(allProfile);
     }catch(error)
 {
-    return res.status(500).json({message: 'Showing all'});
+    return res.status(500).json({message: error.message});
 }}
 module.exports={
     getProfile

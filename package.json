@@ -5,7 +5,11 @@
   "main": "index.js",
   "nyc": {
     "include": [
-    "utils/sampleFunctions.js"
+
+    "utils/EndOfDay.js",
+    "utils/GetProfile.js",
+    "utils/EditProfile.js"
+
     ],
     "exclude": [],
     "reporter": [
@@ -19,7 +23,9 @@
     "statements": 80
     },
   "scripts": {
-    "test": "mocha tests/*.test.js"
+
+    "test": "nyc mocha tests/*.test.js"
+
   },
   "author": "",
   "license": "ISC",
