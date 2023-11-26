@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(express.static("./public"));
 
 // Import your UserUtil module
-const { deleteUser, updateUserTime } = require('./utils/UserUtil')
+const { updateUserTime } = require('./utils/UserUtil')
 
 // Define routes
 app.put('/update-user-time/:id', updateUserTime);
