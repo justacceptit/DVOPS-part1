@@ -112,7 +112,7 @@ async function updateUserTime(req, res) {
             }
 
             // Update the "time" property to the current time
-            user.time = new Date().toISOString();
+            user.time = new Date().toLocaleTimeString();
 
             // Save the updated users array to the file
             await fs.writeFile('utils/users.json', JSON.stringify(allUsers), 'utf8');
