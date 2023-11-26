@@ -10,7 +10,10 @@ const{addProfile}=require('./utils/EmployeeUtil')
 app.post('/add-profile',addProfile);
 const{editProfile}=require('./utils/EditProfile')
 app.put('/edit-profile/:id',editProfile);
-
+//const { TimeIn } = require('./utils/TimeIn');
+//app.put('/time-in',TimeIn);
+const { EndOfDay } = require('./utils/EndOfDay');
+app.put('/eod',EndOfDay);
 app.get('/', (req, res) => {
 res.sendFile(__dirname + "/public/" + startPage);
 })
