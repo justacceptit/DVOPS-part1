@@ -182,7 +182,30 @@ describe('User Util', function () {
       });
 
       
-
+      it('should handle updating time for a non-existent user', async function () {
+        const invalidUserId = '253235'; // Replace with a non-existent user ID
+    
+        // Mock the request and response objects
+        const req = {
+          params: { id: invalidUserId },
+        };
+        const res = {
+          status: function (code) {
+            this.statusCode = code;
+            return this;
+          },
+          json: function (data) {
+            this.responseData = data;
+          },
+        };
+    
+        // Call the updateUserTime function for a non-existent user
+        await updateUserTime(req, res);
+    
+        // Check the response status code and message
+        expect(res.statusCode).to.equal(404);
+        expect(res.responseData.message).to.equal('User not found!');
+      });
 
     });
 
