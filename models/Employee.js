@@ -3,9 +3,9 @@ class Employee {
     this.name = name;
     this.password = password;
     this.level=level;
-    this.time_in=new Date().toLocaleTimeString();
-    this.date=new Date().toLocaleDateString();
-    
+    this.time_in='';
+    this.date='';
+    //this.test_if_empty='';
     const timestamp =new Date().getTime();
     const random =Math.floor(Math.random()*1000);
     this.id =  "" + random.toString().padStart(3, '0');
