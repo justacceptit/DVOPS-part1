@@ -22,7 +22,7 @@ async function writeJSON(object, filename) {
     throw err;
   }
 }
-
+// Validation checks for register
 async function register(req, res) {
   try {
     const fullname = req.body.fullname;
