@@ -19,7 +19,7 @@ const { getProfile } = require('./utils/GetProfile');
 app.get('/get-profile',getProfile);
 
 
-const { deleteUser, register, login, updateUserTime } = require('./utils/UserUtil');
+const { deleteUser, register, login, updateUserTime, updateUserTimeOut } = require('./utils/UserUtil');
 
 
 // Define routes
@@ -27,6 +27,7 @@ app.delete('/delete-user/:id', deleteUser);
 app.post('/register', register);
 app.post('/login', login);
 app.put('/update-user-time/:id', updateUserTime);
+app.put('/time-out/:id',updateUserTimeOut);
 
 
 app.get('/', (req, res) => {
