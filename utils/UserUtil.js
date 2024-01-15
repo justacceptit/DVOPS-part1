@@ -139,6 +139,42 @@ async function deleteUser(req, res) {
     }
 }
 
+async function updateUserTimeOut(req, res) {
+  try {
+    const id = req.params.id;
+
+    const allUsers = await readJSON('utils/users.json');
+
+    const userIndex = allUsers.findIndex(user => user.id == id);
+
+    if (userIndex !== -1) {
+      const user = allUsers[userIndex];
+
+      // Check if the user has not timed in
+      if (!user.time_in) {
+        return res.status(400).json({ message: 'User has not timed in yet!' });
+      }
+
+      // Check if the user has already timed out
+      if (user.time_out) {
+        return res.status(400).json({ message: 'User already timed out!' });
+      }
+
+      // Update the "time_out" property to the current time
+      user.time_out = new Date().toLocaleTimeString();
+
+      // Save the updated users array to the file
+      await fs.writeFile('utils/users.json', JSON.stringify(allUsers), 'utf8');
+
+      return res.status(200).json({ message: 'User time out updated successfully!' });
+    } else {
+      return res.status(404).json({ message: 'User not found!' });
+    }
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+}
+
 
 
 module.exports = {
@@ -149,6 +185,7 @@ module.exports = {
   register,
   login,
   deleteUser,
-  updateUserTime
+  updateUserTime,
+  updateUserTimeOut
 };
 
