@@ -103,7 +103,7 @@ describe('Testing Time in function', function () {
       });
 
       it('should record the correct time when user times in', async function () {
-        const testUserId = '1'; // Replace with an actual user ID for your test
+        const testUserId = '70'; // Replace with an actual user ID for your test
     
         // Mock the request and response objects
         const req = {
