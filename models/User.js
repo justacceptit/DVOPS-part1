@@ -1,8 +1,8 @@
 // Credentials required of a user that must be provided 
 
 class User {
-    constructor(fullname, password) {
-        this.fullname = fullname;
+    constructor(name, password) {
+        this.name = name;
         this.password = password;
     }
 }
