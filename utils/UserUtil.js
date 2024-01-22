@@ -25,11 +25,11 @@ async function writeJSON(object, filename) {
 
 async function register(req, res) {
   try {
-    const fullname = req.body.fullname;
+    const name = req.body.name;
     const password = req.body.password;
 
     // Validation checks done for registration
-    if (fullname.length < 3 || password.length < 6 ) { // Full Name must be more than 3 characters long, Password must be more than 6 characters
+    if (name.length < 3 || password.length < 6 ) { // Full Name must be more than 3 characters long, Password must be more than 6 characters
       return res.status(500).json({ message: 'Validation error' });
     } else {
       const newUser = new User(fullname, password);
@@ -43,13 +43,13 @@ async function register(req, res) {
   // Validation checks done for login
 async function login(req, res) {
   try {
-  const fullname = req.body.fullname;
+  const name = req.body.name;
   const password = req.body.password;
   const allUsers = await readJSON('utils/users.json');
   var validCredentials = false;
   for (var i = 0; i < allUsers.length; i++) {
   var currUser = allUsers[i];
-  if (currUser.fullname == fullname && currUser.password == password) // Must exist in the database
+  if (currUser.name == name && currUser.password == password) // Must exist in the database
   validCredentials = true;
   }
   if (validCredentials) {
