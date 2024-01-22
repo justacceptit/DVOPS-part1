@@ -33,7 +33,7 @@ async function editProfile(req,res){
     }
      if(modified==true){//if modified ==true
         await fs.writeFile('utils/users.json',JSON.stringify(allProfile),'utf-8');
-        return res.status(201).json({message:'Profile modified successfully'});
+        return res.status(201).json({message:'Profile modified successfully!'});
         
     }
    else{
