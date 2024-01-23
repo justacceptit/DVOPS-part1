@@ -1,5 +1,4 @@
 
-    //made by xmn, pls dont delete until submission of project
 function login() {
 	
 	var response = "";
@@ -36,4 +35,6 @@ function login() {
 	
 	request.send(JSON.stringify(jsonData));
 	
+
 }
+
