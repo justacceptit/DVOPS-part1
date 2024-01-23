@@ -11,10 +11,10 @@ try{
     for(var i=0;i<allProfile.length;i++){
         var curcurrProfile =allProfile[i];
        if(curcurrProfile.name==name && curcurrProfile.password==password){
-            
+            const id=allProfile[i].id
             const level=allProfile[i].level
             //allProfile[i].level=level;
-            return res.status(201).json(level);
+            return res.status(201).json(level+' / '+id);
         }
       
      

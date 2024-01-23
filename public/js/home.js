@@ -25,13 +25,13 @@ function updateUserTime(selectedId) {
 
 function callname(){
     var value = sessionStorage.getItem('name');
-   // console.log(value);
+    console.log(value);
     return value;
 }
 
 function callpassword(){
     var value = sessionStorage.getItem('password');
-   //console.log(value);
+   console.log(value);
     return value;
 }
 
@@ -47,11 +47,12 @@ function call() {
     request.onload = function () {
         //selectedlvl = JSON.parse(name);
         response = JSON.parse(request.responseText);
-        //console.log('respose is ',response);
-        var level = response;        
+            console.log('respose is ',response);
+        var level = response;  
+              
        sessionStorage.setItem("level", level)
            };
-           //console.log('level:',sessionStorage.getItem('level'))
+           console.log('level:',sessionStorage.getItem('level'))
     request.send();
 
 }

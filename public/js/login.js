@@ -24,7 +24,7 @@ function login() {
 		if (response.message == "Login successful!") {
 			sessionStorage.setItem("name", jsonData.name)
 			sessionStorage.setItem("password", jsonData.password)
-			//sessionStorage.setItem("level",call(sessionStorage.getItem(call(jsonData.name))))
+			sessionStorage.setItem("level",call(sessionStorage.getItem(call(jsonData.name))))
             window.location.href = 'home.html';
 			
 		}
