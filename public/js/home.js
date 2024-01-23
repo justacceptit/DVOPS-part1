@@ -1,35 +1,104 @@
 
-function updateUserTime(selectedId) {
-    var response = "";
+function callname(){
+    var value = sessionStorage.getItem('name');
+    console.log(value);
+    return value;
+}
+
+function callpassword(){
+    var value = sessionStorage.getItem('password');
+   console.log(value);
+    return value;
+}
+
+function call() {
+    var response = '';
+    var name = callname();
+    var password = callpassword();
     var request = new XMLHttpRequest();
 
-    request.open("PUT", "/update-user-time/" + selectedId, true);
+    request.open('GET', `/call/${name}/${password}`, true);
     request.setRequestHeader('Content-Type', 'application/json');
 
     request.onload = function () {
+
+        
         response = JSON.parse(request.responseText);
+            console.log('respose is ',response);
+        var level = response;    
+        const splitt= response.split('/');
+        console.log(splitt)   
+        console.log(splitt[0])
+        sessionStorage.setItem("level", splitt[0])
+        sessionStorage.setItem("id", splitt[1])    
 
-        if (response.message == "User time updated successfully!") {
-            // Handle success, maybe redirect or display a message
-        } else if (response.message == "User already timed in!") {
-            // Handle case where the user has already timed in
-            alert('You have already timed in!');
-        } else {
-            // Handle other errors, maybe show an alert
-            console.error('Unable to update user time!');
-        }
-    };
-
+           };
+           console.log('level:',sessionStorage.getItem('level'))
     request.send();
+
 }
-function editpage() {
-    window.location.href = 'edit.html';
+function addProfile() {
+	var response = "";
+
+	var jsonData = new Object();
+    jsonData.name = document.getElementById("Name").value;
+    jsonData.password = document.getElementById("Password").value;
+    jsonData.level = document.getElementById("Level").value;
+    jsonData.date = document.getElementById("Date").value;
+    jsonData.time_in = document.getElementById("Time_In").value;
+	
+	if (jsonData.name == "" || jsonData.password == "" || jsonData.date == "") {
+		document.getElementById("message").innerHTML = 'All fields are required!';
+		document.getElementById("message").setAttribute("class", "text-danger");
+		return;
+	}
+
+	var request = new XMLHttpRequest();
+
+	request.open("POST", "/add-resource", true);
+	request.setRequestHeader('Content-Type', 'application/json');
+
+	request.onload = function () {
+		response = JSON.parse(request.responseText);
+
+        if (response.message == undefined) {
+			document.getElementById("message").innerHTML = 'Added Resouce: ' + jsonData.name + '!';
+			document.getElementById("message").setAttribute("class", "text-success");
+
+			document.getElementById("name").value = "";
+			document.getElementById("location").value = "";
+			document.getElementById("description").value = "";
+
+			window.location.href = 'home.html';
+		}
+		else {
+			document.getElementById("message").innerHTML = 'Unable to add resource!';			document.getElementById("message").setAttribute("class", "text-danger");
+			document.getElementById("message").setAttribute("class", "text-danger");
+		}
+	};
+
+	request.send(JSON.stringify(jsonData));
 }
-function calendar() {
-    window.location.href = 'calendar.html';
+
+function callsession(){
+    var pass='';
+    var keys = Object.keys(sessionStorage);
+    keys.forEach(function(key) {
+        var value = sessionStorage.getItem(key);
+
+        if(key=='password'){
+            len= key.length
+            for (var i=0;i<len;i++){
+            pass +='*'
+            }
+            console.log(pass)
+        }else{
+        console.log(key + ": " + value);}
+
+    });
 }
 function GetProfile() {
-
+    
     var response = '';
     var request = new XMLHttpRequest();
 
@@ -38,6 +107,74 @@ function GetProfile() {
 
     request.onload = function () {
         response = JSON.parse(request.responseText);
+        //console.log(response);
+        var html = ''
+        for (var i = 0; i < response.length; i++)
+        if (response[i].id === '1') {
+            continue; // Skip this profile
+        }else
+        {
+            html += '<tr>' +
+                '<td>' + (i+1) + '</td>' +
+                '<td>' + response[i].name + '</td>' +
+                '<td>' + response[i].level + '</td>' +
+                '<td>' + response[i].date + '</td>' +
+                '<td>' + response[i].time_in + '</td>' +
+                //'<td>' +
+                  //  '<button type="button" class="btn btn-warning" onclick="editProfile(\'' + JSON.stringify(response[i]).replaceAll('\"', '&quot;') + '\')">Edit </button> ' + 
+                   // '<button type="button" class="btn btn-danger" onclick="deleteProfile(' + response[i].id + ')"> Delete</button>' + 
+                '</td>'+
+            '</tr>'
+        }
+
+        document.getElementById('tableContent').innerHTML = html;
+    };
+
+    request.send();
+}
+//backup of get profile
+/*function GetProfile() {
+    
+    var response = '';
+    var request = new XMLHttpRequest();
+
+    request.open('GET', '/get-profile', true);
+    request.setRequestHeader('Content-Type', 'application/json');
+
+    request.onload = function () {
+        response = JSON.parse(request.responseText);
+        
+        var html = ''
+        for (var i = 0; i < response.length; i++)
+        {
+            html += '<tr>' +
+                '<td>' + (i+1) + '</td>' +
+                '<td>' + response[i].name + '</td>' +
+                '<td>' + response[i].level + '</td>' +
+                '<td>' + response[i].date + '</td>' +
+                '<td>' + response[i].time_in + '</td>' +
+                '<td>' +
+                    '<button type="button" class="btn btn-warning" onclick="editProfile(\'' + JSON.stringify(response[i]).replaceAll('\"', '&quot;') + '\')">Edit </button> ' + 
+                    '<button type="button" class="btn btn-danger" onclick="deleteProfile(' + response[i].id + ')"> Delete</button>' + 
+                '</td>'+
+            '</tr>'
+        }
+
+        document.getElementById('tableContent').innerHTML = html;
+    };
+
+    request.send();
+}
+*/
+
+
+
+      function GetProfile() {
+
+    var response = '';
+    var request = new XMLHttpRequest();
+
+    request.open('GET', '/get-profile', true);
         //console.log(response);
         var html = ''
         for (var i = 0; i < response.length; i++)
@@ -206,24 +343,8 @@ function updateProfile(id) {
 
     request.send(JSON.stringify(jsonData));
 }
-function deleteUser(selectedId) {
-    var response = "";
-    var request = new XMLHttpRequest();
 
-    request.open("DELETE", "/delete-user/" + selectedId, true);
-    request.setRequestHeader('Content-Type', 'application/json');
 
-    request.onload = function () {
-        response = JSON.parse(request.responseText);
 
-        if (response.message == "User deleted successfully!") {
-            window.location.href = 'home.html';
-        } else {
-            alert('Unable to delete user!');
-        }
-    };
-
-    request.send();
-}
 
 
