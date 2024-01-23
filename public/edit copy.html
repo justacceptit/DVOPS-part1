@@ -1,15 +1,21 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+    <title>Configure Page</title>
+    
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="js/home.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
+    
+    
+   
+   <!-- <link rel="stylesheet" href="css/styles.css">--><!--
 </head>
 <div class="navbar">
   <img src = "images/logo.png" alt='APPPPPPP LOGO' >
@@ -17,23 +23,9 @@
     Placeholder
 </button>
 </div>
-<body  onload="call(),GetProfile(),callsession(); ">
+<body  onload="GetProfile(); ">
     <div class="container mt-5">
-       
-
-          <div style="float: left; width: 40%;">
-            <body>
-              <body>
-                <div class="container">
-                    <h1>User Time Management</h1>
-                    <input type="text" id="userId" placeholder="Enter User ID">
-                    <button id="timeInBtn">Time In</button>
-                    <button id="timeOutBtn">Time Out</button>
-                    <div id="message"></div>
-                </div>
-            
-                <script src="js/home.js"></script>
-            </body>
+          
       </div>
         <div class="row justify-content-center">
             <div  style="float: right;width: 60%;">
@@ -45,7 +37,7 @@
                             <th style='border: 1px solid; width: auto;'>Level</th>
                             <th style='border: 1px solid; width: auto;'>Date</th>
                             <th style='border: 1px solid; width: auto;'>Time In</th>
-                          <!--  <th style='border: 1px solid; width: auto;'>Action</th>-->
+                            <th style='border: 1px solid; width: auto;'>Action</th>
                         </tr>
                     </thead>
                     <tbody id="tableContent">
@@ -53,45 +45,10 @@
                 </table>
             </div>
         </div>
-    </div>
+    </div>-->
     
-    <!-- Modal -->
-    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="profileModalLabel">Add Member</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="name">Resource Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Name">
-              </div>
-              <div class="form-group">
-                <label for="location">Location</label>
-                <input type="text" class="form-control" id="location" placeholder="Enter resource location">
-              </div>
-              <div class="form-group">
-                <label for="description">Description</label>
-                <input type="text" class="form-control" id="description" placeholder="Enter short description">
-              </div>
-              <p align="right" id="message" class=""></p>
-            </form>
-          </div>
-          <div class="modal-footer">
-            
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="addResource()">Add Resource</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Edit Modal -->
+   
+    <!-- Edit Modal --><!--
     <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -104,28 +61,37 @@
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <label for="name">Resource Name</label>
+                <label for="editname">Name</label>
                 <input type="text" class="form-control" id="editName" placeholder="Name">
               </div>
               <div class="form-group">
-                <label for="password">Location</label>
+                <label for="editpassword">Password</label>
                 <input type="text" class="form-control" id="editPassword" placeholder="Password  ">
               </div>
               <div class="form-group">
-                <label for="level">Description</label>
+                <label for="editlevel">Level</label>
                 <input type="text" class="form-control" id="editLevel" placeholder="Level">
               </div>
+              <div class="form-group">
+                <label for="editDate">Date</label>
+                <input type="text"id="editDate" >
+              </div>
+              <div class="form-group">
+                <label for="editTime_In">Time in</label>
+                <input type="time" class="form-control" id="editTime_In" placeholder="Time">
+              </div>
+              
               <p align="right" id="editMessage" class=""></p>
             </form>
           </div>
           <div class="modal-footer">
             
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="updateButton" onclick="">Update Resource</button>
+            <button type="button" class="btn btn-primary" id="updateButton" onclick="updateProfile()">Update Resource</button>
           </div>
         </div>
       </div>
     </div>
     
     </body>
-</html>
+</html>-->

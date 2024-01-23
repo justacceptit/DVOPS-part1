@@ -2,7 +2,7 @@ class User {
     constructor(name, password,level) {
     this.name = name;
     this.password = password;
-    this.level="1";
+    this.level=level;
     this.date=new Date().toLocaleDateString();
     this.time_in="";
     
