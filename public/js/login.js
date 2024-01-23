@@ -14,7 +14,7 @@ function login() {
     response = JSON.parse(request.responseText);
     console.log(response)
     if (response.message == "Login successful!") {
-    sessionStorage.setItem("email", jsonData.email);
+    sessionStorage.setItem("name", jsonData.name);
     window.location.href = 'home.html';
     }
     else {
