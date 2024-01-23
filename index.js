@@ -3,7 +3,9 @@ var bodyParser = require("body-parser");
 var app = express();
 
 const PORT = process.env.PORT || 5050
-var startPage = "edit.html";
+
+var startPage = "home.html";
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -38,6 +40,7 @@ app.get('/call/:name/:password',call);
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/public/" + startPage);
 });
+
 
 const server = app.listen(PORT, function () {
     console.log(`Demo project at: ${PORT}!`);
