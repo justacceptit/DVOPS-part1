@@ -30,6 +30,9 @@ app.put('/update-user-time/:id', updateUserTime);
 app.put('/time-out/:id',updateUserTimeOut);
 
 
+const { call } = require('./utils/temp');
+app.get('/call/:name/:password',call);
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/public/" + startPage);
 });
