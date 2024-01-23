@@ -17,6 +17,7 @@ function login() {
             // Save user information in session storage
             sessionStorage.setItem("name", jsonData.name);
             sessionStorage.setItem("level", response.level); 
+            sessionStorage.setItem("id", response.id); 
             window.location.href = 'home.html';
         } else {
             document.getElementById("error").innerHTML = 'Invalid credentials!';
