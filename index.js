@@ -15,11 +15,15 @@ const{editProfile}=require('./utils/EditProfile')
 app.put('/edit-profile/:name',editProfile);
 const { EndOfDay } = require('./utils/EndOfDay');
 app.put('/eod',EndOfDay);
-const { getProfile } = require('./utils/GetProfile');
+const { getProfile, getProfileby } = require('./utils/GetProfile');
 app.get('/get-profile',getProfile);
+app.get('/get-profile-by/:id',getProfileby);
+const { call } = require('./utils/callProfile');
+app.get('/call/:name/:password',call);
 
 
 const { deleteUser, register, login, updateUserTime, updateUserTimeOut } = require('./utils/UserUtil');
+
 
 
 // Define routes
