@@ -21,7 +21,7 @@ describe('Testing Time in function', function () {
     });
   
     it('should successfully update the user time on time in', async function () {
-        const testUserId = '69'; // Replace with an actual user ID for your test
+        const testUserId = '312'; // Replace with an actual user ID for your test
     
         // Mock the request and response objects
         const req = {
@@ -57,7 +57,7 @@ describe('Testing Time in function', function () {
         expect(userAfterTimeIn.time_in).to.exist;
       });
       it('should handle duplicate "time in" operation', async function () {
-        const testUserId = '303'; // Replace with an actual user ID for your test
+        const testUserId = '313'; // Replace with an actual user ID for your test
     
         // Mock the request and response objects for the first time in operation
         const firstTimeInReq = {
@@ -103,7 +103,7 @@ describe('Testing Time in function', function () {
       });
 
       it('should record the correct time when user times in', async function () {
-        const testUserId = '70'; // Replace with an actual user ID for your test
+        const testUserId = '314'; // Replace with an actual user ID for your test
     
         // Mock the request and response objects
         const req = {
@@ -208,4 +208,3 @@ describe('Testing Time in function', function () {
       });
 
     });
-

@@ -1,28 +1,4 @@
 
-function updateUserTime(selectedId) {
-    var response = "";
-    var request = new XMLHttpRequest();
-
-    request.open("PUT", "/update-user-time/" + selectedId, true);
-    request.setRequestHeader('Content-Type', 'application/json');
-
-    request.onload = function () {
-        response = JSON.parse(request.responseText);
-
-        if (response.message == "User time updated successfully!") {
-            // Handle success, maybe redirect or display a message
-        } else if (response.message == "User already timed in!") {
-            // Handle case where the user has already timed in
-            alert('You have already timed in!');
-        } else {
-            // Handle other errors, maybe show an alert
-            console.error('Unable to update user time!');
-        }
-    };
-
-    request.send();
-}
-
 function callname(){
     var value = sessionStorage.getItem('name');
     console.log(value);
@@ -45,12 +21,17 @@ function call() {
     request.setRequestHeader('Content-Type', 'application/json');
 
     request.onload = function () {
-        //selectedlvl = JSON.parse(name);
+
+        
         response = JSON.parse(request.responseText);
             console.log('respose is ',response);
-        var level = response;  
-              
-       sessionStorage.setItem("level", level)
+        var level = response;    
+        const splitt= response.split('/');
+        console.log(splitt)   
+        console.log(splitt[0])
+        sessionStorage.setItem("level", splitt[0])
+        sessionStorage.setItem("id", splitt[1])    
+
            };
            console.log('level:',sessionStorage.getItem('level'))
     request.send();
@@ -261,5 +242,7 @@ function deleteProfile(selectedId) {
     };
 
     request.send();
+
 }
+
 

@@ -22,7 +22,7 @@ const { call } = require('./utils/callProfile');
 app.get('/call/:name/:password',call);
 
 
-const { deleteUser, register, login, updateUserTime } = require('./utils/UserUtil');
+const { deleteUser, register, login, updateUserTime, updateUserTimeOut } = require('./utils/UserUtil');
 
 
 
@@ -31,7 +31,11 @@ app.delete('/delete-user/:id', deleteUser);
 app.post('/register', register);
 app.post('/login', login);
 app.put('/update-user-time/:id', updateUserTime);
+app.put('/time-out/:id',updateUserTimeOut);
 
+
+const { call } = require('./utils/temp');
+app.get('/call/:name/:password',call);
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/public/" + startPage);
