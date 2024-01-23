@@ -15,16 +15,17 @@ async function EndOfDay(req,res){
         var curcurrProfile =allProfile[i];
         
 
-            if(curcurrProfile.date==todaydate){//if date is same as current day, to send info of users that worked that day, this function is designed to collect information of all before the clock hits midnight
-
+            if(curcurrProfile.date== todaydate){//if date is same as current day, to send info of users that worked that day, this function is designed to collect information of all before the clock hits midnight
+            
                 await fs.writeFile('utils/eod.json',JSON.stringify(allProfile),'utf-8');//writes current info into eod.json
                  return res.status(201).json({message:'End of day'});
             }
           else{
-            return res.status(500).json({message:'no on has timed in'});
+           
           }
 }}catch(error){
-return res.status(500).json({message: error.message});
+//return res.status(500).json({message: error.message});
+return res.status(500).json({message:'no on has timed in',todaydate,curcurrProfile});
 }
 };
 
