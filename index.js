@@ -18,8 +18,6 @@ app.put('/eod',EndOfDay);
 const { getProfile, getProfileby } = require('./utils/GetProfile');
 app.get('/get-profile',getProfile);
 app.get('/get-profile-by/:id',getProfileby);
-const { call } = require('./utils/callProfile');
-app.get('/call/:name/:password',call);
 
 
 const { deleteUser, register, login, updateUserTime, updateUserTimeOut } = require('./utils/UserUtil');
