@@ -2,6 +2,9 @@ const { time } = require('console');
 const { User } = require('../models/User');
 const fs = require('fs').promises;
 
+function deleteUser(){
+  window.location.href = 'deleteUser.html';
+}
 async function readJSON(filename) {
   try {
     const data = await fs.readFile(filename, 'utf8');
