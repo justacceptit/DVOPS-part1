@@ -18,7 +18,7 @@ function deleteUser(userId) {
             // Refresh the list of users or redirect as needed
             GetProfile(); // Assuming this function refreshes the user list
         } else {
-            alert('Error: ' + response.message);
+            alert( response.message);
         }
     };
     request.send();
@@ -151,40 +151,14 @@ function GetProfile() {
                 '</td>'+
             '</tr>'
         }
-        function displayMessage(message, isError = false) {
-            const messageDiv = document.getElementById('message');
-            messageDiv.textContent = message;
-            messageDiv.style.color = isError ? '#d9534f' : '#5cb85c';
-        }
-        
-        document.getElementById('deleteBtn').addEventListener('click', function() {
-            const userId = document.getElementById('userId').value;
-            if (!userId) {
-                displayMessage('Please enter a User ID.', true);
-                return;
-            }
-        
-            fetch(`/delete-user/${userId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                displayMessage(data.message);
-            })
-            .catch(error => {
-                displayMessage(error.message, true);
-            });
-        });
-        
-
         document.getElementById('tableContent').innerHTML = html;
     };
 
     request.send();
 }
+     
+
+    
 function GetProfileEdit() {
     
     var response = '';
@@ -195,7 +169,7 @@ function GetProfileEdit() {
 
     request.onload = function () {
         response = JSON.parse(request.responseText);
-        //console.log(response);
+        console.log(response);
         var html = ''
         for (var i = 0; i < response.length; i++)
         if (response[i].id === '1') {
