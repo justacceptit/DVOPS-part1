@@ -1,53 +1,4 @@
 
-function displayMessage(message, isError = false) {
-    const messageDiv = document.getElementById('message');
-    messageDiv.textContent = message;
-    messageDiv.style.color = isError ? '#d9534f' : '#5cb85c';
-}
-
-document.getElementById('timeInBtn').addEventListener('click', function() {
-    const userId = document.getElementById('userId').value;
-    if (!userId) {
-        displayMessage('Please enter a User ID.', true);
-        return;
-    }
-
-    fetch(`/update-user-time/${userId}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        displayMessage(data.message);
-    })
-    .catch(error => {
-        displayMessage(error.message, true);
-    });
-});
-
-document.getElementById('timeOutBtn').addEventListener('click', function() {
-    const userId = document.getElementById('userId').value;
-    if (!userId) {
-        displayMessage('Please enter a User ID.', true);
-        return;
-    }
-    fetch(`/time-out/${userId}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        displayMessage(data.message);
-    })
-    .catch(error => {
-        displayMessage(error.message, true);
-    });
-});
-
 
 function callname(){
     var value = sessionStorage.getItem('name');
@@ -148,6 +99,41 @@ function callsession(){
     });
 }
 function GetProfile() {
+    
+    var response = '';
+    var request = new XMLHttpRequest();
+
+    request.open('GET', '/get-profile', true);
+    request.setRequestHeader('Content-Type', 'application/json');
+
+    request.onload = function () {
+        response = JSON.parse(request.responseText);
+        //console.log(response);
+        var html = ''
+        for (var i = 0; i < response.length; i++)
+        if (response[i].id === '1') {
+            continue; // Skip this profile
+        }else
+        {
+            html += '<tr>' +
+                '<td>' + (i+1) + '</td>' +
+                '<td>' + response[i].name + '</td>' +
+                '<td>' + response[i].level + '</td>' +
+                '<td>' + response[i].date + '</td>' +
+                '<td>' + response[i].time_in + '</td>' +
+               // '<td>' +
+                 //   '<button type="button" class="btn btn-warning" onclick="editProfile(\'' + JSON.stringify(response[i]).replaceAll('\"', '&quot;') + '\')">Edit </button> ' + 
+                   // '<button type="button" class="btn btn-danger" onclick="deleteProfile(' + response[i].id + ')"> Delete</button>' + 
+                '</td>'+
+            '</tr>'
+        }
+
+        document.getElementById('tableContent').innerHTML = html;
+    };
+
+    request.send();
+}
+function GetProfileEdit() {
     
     var response = '';
     var request = new XMLHttpRequest();
