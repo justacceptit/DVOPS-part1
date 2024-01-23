@@ -120,9 +120,9 @@ function GetProfile() {
                 '<td>' + response[i].level + '</td>' +
                 '<td>' + response[i].date + '</td>' +
                 '<td>' + response[i].time_in + '</td>' +
-                //'<td>' +
-                  //  '<button type="button" class="btn btn-warning" onclick="editProfile(\'' + JSON.stringify(response[i]).replaceAll('\"', '&quot;') + '\')">Edit </button> ' + 
-                   // '<button type="button" class="btn btn-danger" onclick="deleteProfile(' + response[i].id + ')"> Delete</button>' + 
+                '<td>' +
+                    '<button type="button" class="btn btn-warning" onclick="editProfile(\'' + JSON.stringify(response[i]).replaceAll('\"', '&quot;') + '\')">Edit </button> ' + 
+                    '<button type="button" class="btn btn-danger" onclick="deleteProfile(' + response[i].id + ')"> Delete</button>' + 
                 '</td>'+
             '</tr>'
         }
@@ -169,36 +169,7 @@ function GetProfile() {
 
 
 
-      function GetProfile() {
-
-    var response = '';
-    var request = new XMLHttpRequest();
-
-    request.open('GET', '/get-profile', true);
-        //console.log(response);
-        var html = ''
-        for (var i = 0; i < response.length; i++)
-            if (response[i].id === '1') {
-                continue; // Skip this profile
-            } else {
-                html += '<tr>' +
-                    '<td>' + (i + 1) + '</td>' +
-                    '<td>' + response[i].name + '</td>' +
-                    '<td>' + response[i].level + '</td>' +
-                    '<td>' + response[i].date + '</td>' +
-                    '<td>' + response[i].time_in + '</td>' +
-                    '<td>' +
-                    '<button type="button" class="btn btn-warning" onclick="editProfile(\'' + JSON.stringify(response[i]).replaceAll('\"', '&quot;') + '\')">Edit </button> ' +
-                    '<button type="button" class="btn btn-danger" onclick="deleteProfile(' + response[i].id + ')"> Delete</button>' +
-                    '</td>' +
-                    '</tr>'
-            }
-
-        document.getElementById('tableContent').innerHTML = html;
-    };
-
-    request.send();
-}
+    
 
 function formatTimeForInput(timeString) {//headscratcher
     if(timeString=='Invalid Date'){
