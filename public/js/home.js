@@ -22,6 +22,7 @@ function updateUserTime(selectedId) {
     request.send();
 }
 
+
 function callname(){
     var value = sessionStorage.getItem('name');
     console.log(value);
@@ -245,6 +246,7 @@ function updateProfile(id) {
 }
 
 
+
 function deleteProfile(selectedId) {
     var response = "";
     var request = new XMLHttpRequest();
@@ -263,4 +265,7 @@ function deleteProfile(selectedId) {
     };
 
     request.send();
+
 }
+
+
