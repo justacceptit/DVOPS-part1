@@ -1,4 +1,6 @@
-
+function homePage(){
+    window.location.href = 'home.html';
+}
 function deleteUser(userId) {
     if (!userId) {
         alert('User ID is missing.');
