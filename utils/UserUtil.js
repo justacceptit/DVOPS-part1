@@ -129,7 +129,7 @@ async function deleteUser(req, res) {
 
             // Update the "time" property to the current time
             user.time_in = new Date().toLocaleTimeString();
-
+            user.date=new Date().toLocaleDateString();
             // Save the updated users array to the file
             await fs.writeFile('utils/users.json', JSON.stringify(allUsers), 'utf8');
 
