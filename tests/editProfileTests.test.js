@@ -23,11 +23,11 @@ describe('Testing Edit features', () => {
             it('Should edit profile successfully', async () => {
                 const req = {
                 body: {
-                    name:"dont touch",
-                    password:"1234555",
-                    level:"1",
-                    time_in:"",
-                    date:"27/11/2023"
+                  name:"dont touch",
+                  password:"123423423",
+                  level:"1",
+                  time_in:"",
+                  date:"27/11/2023"
                 }
                 };
                
