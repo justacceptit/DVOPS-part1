@@ -13,7 +13,8 @@
       "utils/GetProfile.js",
       "utils/EditProfile.js",
       "tests/deleteUser.test.js",
-      "tests/timeIn.test.js"
+      "tests/timeIn.test.js",
+       "tests/timeOut.test.js"
     ],
     "exclude": [],
     "reporter": [
