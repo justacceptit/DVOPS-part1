@@ -3,12 +3,13 @@ const { expect } = require('chai');
 const mocha = require('mocha');
 const fs = require('fs');
 const path = require('path'); // Import path module here
+var counter = 0;
 
 
 describe('Time In UI Tests', function () {
     this.timeout(30000);
     let driver;
-    let url = 'http://localhost:5050/home.html'; 
+    let url = 'http://localhost:5050/instrumented/home.html'; 
     
 
     before(async function () {
@@ -85,7 +86,43 @@ describe('Time In UI Tests', function () {
 
         expect(message).to.include('User not found!');
     });
+
+    it('should display an error if no user ID in session', async function () {
+        await driver.get(url);
     
+        // Clear session storage to simulate no 'id'
+        await driver.executeScript("sessionStorage.clear();");
+    
+        // Click the "Time In" button
+        const timeInBtn = await driver.findElement(By.id('timeInBtn'));
+        await timeInBtn.click();
+    
+        // Wait for the message to appear
+        const message = await driver.findElement(By.id('message')).getText();
+    
+        expect(message).to.include('No user ID found in session.');
+    });
+    
+
+
+    
+    
+    afterEach(async function () {
+        await driver.executeScript('return window.__coverage__;').then(async (coverageData) => {
+        if (coverageData) {
+        // Save coverage data to a file
+        await fs.writeFile('coverage-frontend/coverage'+ counter++ + '.json',
+        JSON.stringify(coverageData), (err) => {
+        if (err) {
+        console.error('Error writing coverage data:', err);
+        } else {
+        console.log('Coverage data written to coverage.json');
+        }
+        });
+        }
+        });
+        });
+
 
     // Additional test cases would follow a similar pattern
 
