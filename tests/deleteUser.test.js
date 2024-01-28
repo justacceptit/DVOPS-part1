@@ -25,7 +25,7 @@ describe('Testing Delete User function', function () {
   
 
   it('should successfully delete a user', async function () {
-    const testUserId = '303'; // Replace with an actual user ID for your test
+    const testUserId = '315'; // Replace with an actual user ID for your test
 
     // Mock the request and response objects
     const req = {
@@ -114,7 +114,7 @@ describe('Testing Delete User function', function () {
   
 
   it('should deny the user of deleting a user if the user being deleted is the only user at level 2', async function () {
-    const testUserId = '69'; // Replace with an actual user ID for your test
+    const testUserId = '423'; // Replace with an actual user ID for your test
 
     // Mock the request and response objects
     const req = {
