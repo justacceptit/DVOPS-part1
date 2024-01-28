@@ -13,11 +13,13 @@
       "utils/GetProfile.js",
       "utils/EditProfile.js",
       "tests/deleteUser.test.js",
-      "tests/timeIn.test.js"
+      "tests/timeIn.test.js",
+      "public/**/*.js"
+      
     ],
     "exclude": [],
     "reporter": [
-      "text-summary"
+      "html", "text"
     ],
     "all": true,
     "check-coverage": true,
@@ -27,8 +29,10 @@
     "statements": 80
   },
   "scripts": {
+
     "test": "nyc mocha tests/*.test.js",
     "start": "node index.js"
+
   },
   "author": "",
   "license": "ISC",
