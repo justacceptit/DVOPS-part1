@@ -35,7 +35,7 @@ describe('Testing Edit features', () => {
                     status: (code) => ({
                       json: (data) => {
                         expect(code).to.equal(201);
-                        expect(data).to.eql({ message: 'Profile modified successfully' });
+                        expect(data).to.eql({ message: 'Profile modified successfully!' });
                       },
                     }),
                   };

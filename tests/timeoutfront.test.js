@@ -3,12 +3,13 @@ const { expect } = require('chai');
 const mocha = require('mocha');
 const fs = require('fs');
 const path = require('path'); // Import path module here
+var counter = 0
 
 
 describe('Time Out Button Tests', function () {
     this.timeout(30000);
     let driver;
-    let url = 'http://localhost:5050/home.html'; // Replace with your website's URL
+    let url = 'http://localhost:5050/instrumented/home.html'; // Replace with your website's URL
 
     before(async function () {
         const defaultUsers = [
@@ -59,6 +60,66 @@ describe('Time Out Button Tests', function () {
         let message = await driver.findElement(By.id('message')).getText();
         expect(message).to.include('User already timed out!');
     });
+
+    it('should display an error if no user ID in session for Time Out', async function () {
+        await driver.get(url);
+    
+        // Clear session storage to simulate no 'id'
+        await driver.executeScript("sessionStorage.clear();");
+    
+        // Click the "Time Out" button
+        const timeOutBtn = await driver.findElement(By.id('timeOutBtn'));
+        await timeOutBtn.click();
+    
+        // Wait for the message to appear
+        const message = await driver.findElement(By.id('message')).getText();
+    
+        expect(message).to.include('No user ID found in session.');
+    });
+    
+    it('should handle errors from the server on time out', async function () {
+        await driver.get(url);
+    
+        // Set a valid user ID in session storage
+        await driver.executeScript("sessionStorage.setItem('id', 'valid_user_id');");
+    
+        // Mock fetch to simulate a server error
+        await driver.executeScript(() => {
+            window.fetch = function() {
+                return Promise.reject(new Error('Simulated fetch error'));
+            };
+        });
+    
+        // Click the "Time Out" button
+        const timeOutBtn = await driver.findElement(By.id('timeOutBtn'));
+        await timeOutBtn.click();
+    
+        // Wait for the message to appear
+        const message = await driver.findElement(By.id('message')).getText();
+    
+        expect(message).to.include('Simulated fetch error');
+    });
+    
+
+        
+    
+    afterEach(async function () {
+        await driver.executeScript('return window.__coverage__;').then(async (coverageData) => {
+        if (coverageData) {
+        // Save coverage data to a file
+        await fs.writeFile('coverage-frontend/coverage'+ counter++ + '.json',
+        JSON.stringify(coverageData), (err) => {
+        if (err) {
+        console.error('Error writing coverage data:', err);
+        } else {
+        console.log('Coverage data written to coverage.json');
+        }
+        });
+        }
+        });
+        });
+
+
 
     after(() => driver && driver.quit());
 });
