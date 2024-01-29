@@ -52,5 +52,23 @@ describe('Delete User Tests', function () {
         // Optionally, you may need to wait for any asynchronous updates that occur after deletion
     });
 
+    afterEach(async function () {
+        await driver.executeScript('return window.__coverage__;').then(async (coverageData) => {
+        if (coverageData) {
+        // Save coverage data to a file
+        await fs.writeFile('coverage-frontend/coverage'+ counter++ + '.json',
+        JSON.stringify(coverageData), (err) => {
+        if (err) {
+        console.error('Error writing coverage data:', err);
+        } else {
+        console.log('Coverage data written to coverage.json');
+        }
+        });
+        }
+        });
+        });
+
+
+
     after(() => driver && driver.quit());
 });
