@@ -1,7 +1,8 @@
 const { app } = require('../index');
 const { Builder, By, until } = require('selenium-webdriver');
 const { describe, it, before, after } = require('mocha');
-const { expect } = require('chai');
+// const { expect } = require('chai');
+const fs = require('fs').promises;
 
 const chrome = require('selenium-webdriver/chrome');
 const chromeOptions = new chrome.Options();
@@ -9,6 +10,7 @@ chromeOptions.addArguments('--headless');
 const driver = new Builder().forBrowser('chrome').setChromeOptions(chromeOptions).build();
 
 var server;
+var counter = 0;
 
 before(async function () {
     server = await new Promise((resolve) => {
@@ -21,7 +23,7 @@ before(async function () {
 describe('Testing Login UI', function () {
 
     it('Should have the correct title', async function () {
-        const baseUrl = 'http://localhost:5050/index.html';
+        const baseUrl = 'http://localhost:5050/index.html' + '/instrumented';
         this.timeout(100000);
         await driver.get(baseUrl);
         const title = await driver.getTitle();
@@ -29,7 +31,7 @@ describe('Testing Login UI', function () {
     });
 
     it('Should show error message - All fields required', async function () {
-        const baseUrl = 'http://localhost:5050/index.html';
+        const baseUrl = 'http://localhost:5050/index.html' + '/instrumented';
         this.timeout(100000);
         await driver.get(baseUrl);
 
@@ -45,7 +47,7 @@ describe('Testing Login UI', function () {
     });
 
     it('Should show error message - Invalid credentials', async function () {
-        const baseUrl = 'http://localhost:5050/index.html';
+        const baseUrl = 'http://localhost:5050/index.html' + '/instrumented';
         this.timeout(100000);
         await driver.get(baseUrl);
 
@@ -68,7 +70,7 @@ describe('Testing Login UI', function () {
     });
 
     it('Should show error message - Incorrect password', async function () {
-        const baseUrl = 'http://localhost:5050/index.html';
+        const baseUrl = 'http://localhost:5050/index.html' + '/instrumented';
         this.timeout(100000);
         await driver.get(baseUrl);
     
@@ -89,7 +91,7 @@ describe('Testing Login UI', function () {
     });
 
     it('Should successfully log in with correct credentials', async function () {
-        const baseUrl = 'http://localhost:5050/index.html';
+        const baseUrl = 'http://localhost:5050/index.html' + '/instrumented';
         this.timeout(600000);
         await driver.get(baseUrl);
     
@@ -111,7 +113,7 @@ describe('Testing Login UI', function () {
 describe('Testing Register UI', function () {
     
     it('Should have the correct title', async function () {
-        const baseUrl = 'http://localhost:5050/register.html';
+        const baseUrl = 'http://localhost:5050/register.html' + '/instrumented';
         this.timeout(100000);
         await driver.get(baseUrl);
         const title = await driver.getTitle();
@@ -119,7 +121,7 @@ describe('Testing Register UI', function () {
     });
 
     it('Should show error message - All fields required during registration', async function () {
-        const baseUrl = 'http://localhost:5050/register.html';
+        const baseUrl = 'http://localhost:5050/register.html' + '/instrumented';
         this.timeout(100000);
         await driver.get(baseUrl);
 
@@ -131,7 +133,7 @@ describe('Testing Register UI', function () {
     });
 
     it('Should show error message - Password is less than 6 characters during registration', async function () {
-        const baseUrl = 'http://localhost:5050/register.html';
+        const baseUrl = 'http://localhost:5050/register.html' + '/instrumented';
         this.timeout(900000000);
         await driver.get(baseUrl);
     
@@ -155,7 +157,7 @@ describe('Testing Register UI', function () {
     });
     
     it('Should show error message - Level must be a number during registration', async function () {
-        const baseUrl = 'http://localhost:5050/register.html';
+        const baseUrl = 'http://localhost:5050/register.html' + '/instrumented';
         this.timeout(900000000);
         await driver.get(baseUrl);
     
@@ -179,7 +181,7 @@ describe('Testing Register UI', function () {
     });
 
     it('Should successfully register a user with valid credentials', async function () {
-        const baseUrl = 'http://localhost:5050/register.html';
+        const baseUrl = 'http://localhost:5050/register.html' + '/instrumented';
         this.timeout(500000);
         await driver.get(baseUrl);
 
@@ -203,6 +205,22 @@ describe('Testing Register UI', function () {
 
 
 });
+
+afterEach(async function () {
+    await driver.executeScript('return window.__coverage__;').then(async (coverageData) => {
+       if (coverageData) {
+            // Save coverage data to a file
+            await fs.writeFile('coverage-frontend/coverage'+ counter++ + '.json',
+    JSON.stringify(coverageData), (err) => {
+                   if (err) {
+                    console.error('Error writing coverage data:', err);
+                   } else {
+                     console.log('Coverage data written to coverage.json');
+                   }
+                 });
+            }
+        });
+    });
 
 after(async function () {
     await driver.quit();
