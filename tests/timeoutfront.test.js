@@ -107,7 +107,7 @@ describe('Time Out Button Tests', function () {
         await driver.executeScript('return window.__coverage__;').then(async (coverageData) => {
         if (coverageData) {
         // Save coverage data to a file
-        await fs.writeFile('coverage-frontend/coverage'+ counter++ + '.json',
+        await fs.writeFile('coverage-frontend/coverage3'+ counter++ + '.json',
         JSON.stringify(coverageData), (err) => {
         if (err) {
         console.error('Error writing coverage data:', err);

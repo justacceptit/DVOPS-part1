@@ -1,30 +1,7 @@
 function homePage(){
     window.location.href = 'home.html';
 }
-function deleteUser(userId) {
-    if (!userId) {
-        alert('User ID is missing.');
-        return;
-    }
 
-    if (!confirm('Are you sure you want to delete this user?')) {
-        return;
-    }
-
-    var request = new XMLHttpRequest();
-    request.open("DELETE", "/delete-user/" + userId, true);
-    request.onload = function () {
-        var response = JSON.parse(request.responseText);
-        if (request.status === 200) {
-            alert(response.message);
-            // Refresh the list of users or redirect as needed
-            GetProfile(); // Assuming this function refreshes the user list
-        } else {
-            alert( response.message);
-        }
-    };
-    request.send();
-}
 
 function callname(){
     var value = sessionStorage.getItem('name');
@@ -162,6 +139,7 @@ function GetProfile() {
 
     
 function GetProfileEdit() {
+    
     
     var response = '';
     var request = new XMLHttpRequest();
