@@ -38,6 +38,13 @@ describe('Delete User Tests', function () {
         // Verify the alert text to confirm successful deletion
         expect(alertText).to.include('User deleted successfully'); // Replace with the actual success message
 
+        await driver.navigate().refresh();
+
+        // Wait for the table to load again
+        await driver.wait(until.elementLocated(By.css('table.table')));
+
+
+
         // Verify the user 'Edward' is no longer in the table
         const userRowsAfterDeletion = await driver.findElements(By.xpath("//tr[td[contains(text(), 'edward')]]"));
         expect(userRowsAfterDeletion.length).to.equal(0, 'User Edward should be deleted from the table.');
