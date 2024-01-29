@@ -14,6 +14,7 @@
       "utils/EditProfile.js",
       "tests/deleteUser.test.js",
       "tests/timeIn.test.js"
+
     ],
     "exclude": [],
     "reporter": [
