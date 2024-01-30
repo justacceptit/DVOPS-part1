@@ -21,7 +21,7 @@ describe('Testing Time Out function', function () {
   });
 
   it('should successfully update the user time on time out', async function () {
-    const testUserId = '69'; // Replace with an actual user ID for your test
+    const testUserId = '316'; // Replace with an actual user ID for your test
 
     // Mock the request and response objects
     const req = {
@@ -58,7 +58,7 @@ describe('Testing Time Out function', function () {
   });
 
   it('should handle duplicate "time out" operation', async function () {
-    const testUserId = '303'; // Replace with an actual user ID for your test
+    const testUserId = '317'; // Replace with an actual user ID for your test
 
     // Mock the request and response objects for the first time out operation
     const firstTimeOutReq = {
