@@ -1,5 +1,6 @@
 function homePage(){
     window.location.href = 'home.html';
+    //console.log('HOMMMMMEEE')
 }
 function deleteUser(userId) {
     if (!userId) {
@@ -120,7 +121,8 @@ function callsession(){
             }
             console.log(pass)
         }else{
-        console.log(key + ": " + value);}
+        console.log(key + ": " + value)
+       ;}
 
     });
 }
@@ -134,7 +136,7 @@ function GetProfile() {
 
     request.onload = function () {
         response = JSON.parse(request.responseText);
-        //console.log(response);
+        console.log('lentght',response.length);
         var html = ''
         for (var i = 0; i < response.length; i++)
         if (response[i].id === '1') {
@@ -174,7 +176,7 @@ function GetProfileEdit() {
         console.log(response);
         var html = ''
         for (var i = 0; i < response.length; i++)
-        if (response[i].id === '1') {
+        if (response[i].id === '1000000') {
             continue; // Skip this profile
         }else
         {
@@ -317,7 +319,7 @@ function updateProfile(id) {
     
     
     }
-    console.log('time json',jsonData.time_in)
+    //console.log('time json',jsonData.time_in)
     //Format Date from dd-mm-yyyy to dd/mm/yyyy
     const dateString = jsonData.date;//call the json data
     //console.log('date',dateString)
@@ -343,11 +345,6 @@ function updateProfile(id) {
         document.getElementById("editMessage").setAttribute("class", "text-danger");
         return;
     }else
-    if (jsonData.time_in == "Invalid Date" ) {
-        document.getElementById("editMessage").innerHTML = 'Please fill in the Time!';
-        document.getElementById("editMessage").setAttribute("class", "text-danger");
-        return;
-    }else
     if (jsonData.name == "" || jsonData.password == "" || jsonData.date == "" || jsonData.time_in == ""|| jsonData.time_in.length <= 5 ) {
         document.getElementById("editMessage").innerHTML = 'All fields are required!';
         document.getElementById("editMessage").setAttribute("class", "text-danger");
@@ -356,12 +353,12 @@ function updateProfile(id) {
 
     var request = new XMLHttpRequest();
 
-    request.open("PUT", "/edit-profile/" + id, true);
+    request.open("PUT", "/edit-profile/"/* + id,*/, true);
     request.setRequestHeader('Content-Type', 'application/json');
 
     request.onload = function () {
         response = JSON.parse(request.responseText);
-
+        console.log(response)
         if (response.message == "Profile modified successfully!") {
             document.getElementById("editMessage").innerHTML = 'Edited Profile: ' + jsonData.name + '!';
             document.getElementById("editMessage").setAttribute("class", "text-success");
