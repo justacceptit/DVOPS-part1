@@ -21,7 +21,7 @@
     ],
     "exclude": [],
     "reporter": [
-      "text-summary"
+      "html","text"
     ],
     "all": true,
     "check-coverage": true,
