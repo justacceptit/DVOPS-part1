@@ -1,15 +1,16 @@
 const { readJSON } = require('./UserUtil')
 
-async function getProfile(req,res){
-    try{
-        //const time_in=req.body.time_in;
-        const allProfile = await readJSON('utils/users.json');
-        return res.status(201).json(allProfile);
-    }catch(error)
-{
-    return res.status(500).json({message: error.message});
-}}
+async function getProfile(req, res) {
+    // const time_in = req.body.time_in;
 
+    return readJSON('utils/users.json')
+        .then(allProfile => {
+            return res.status(201).json(allProfile);
+        })
+        .catch(error => {
+            return res.status(500).json({ message: error.message });
+        });
+}/*
 async function getProfileby(req,res){
     try{
         const id=req.params.id;
@@ -24,8 +25,8 @@ async function getProfileby(req,res){
         
     }catch(error)
 {
-    return res.status(500).json({message: error.message});
-}}
+    return res.status(500).json({message: "error.message"});
+}}*/
 module.exports={
-    getProfile,getProfileby
+    getProfile,/*getProfileby*/
 };
