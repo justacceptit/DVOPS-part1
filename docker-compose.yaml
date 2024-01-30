@@ -4,5 +4,5 @@ services:
     build: 
       context: .
       dockerfile: DockerfileRyan
-    image: ryanlimxy/rms-docker-img:v4
+    image: ryanlimxy/rms-docker-img:latest
     container_name: rms-docker-container
