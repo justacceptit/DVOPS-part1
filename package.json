@@ -14,12 +14,14 @@
       "utils/EditProfile.js",
       "tests/deleteUser.test.js",
       "tests/timeIn.test.js",
+      "jasper-UITest.test.js"
+,
       "public/**/ryan.js"
       
     ],
     "exclude": [],
     "reporter": [
-      "html", "text"
+      "text-summary"
     ],
     "all": true,
     "check-coverage": true,
@@ -46,8 +48,6 @@
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "mocha": "^10.2.0",
-    "ncp": "^2.0.0",
-    "nyc": "^15.1.0",
-    "selenium-webdriver": "^4.17.0"
+    "nyc": "^15.1.0"
   }
 }
