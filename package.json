@@ -13,12 +13,15 @@
       "utils/GetProfile.js",
       "utils/EditProfile.js",
       "tests/deleteUser.test.js",
-      "tests/timeIn.test.js"
+      "tests/timeIn.test.js",
+      "tests/EdwardUITests.test.js",
+      "public/js/login.js",
+      "public/js/register.js"
 
     ],
     "exclude": [],
     "reporter": [
-      "text-summary"
+      "html", "text"
     ],
     "all": true,
     "check-coverage": true,
@@ -28,8 +31,12 @@
     "statements": 80
   },
   "scripts": {
+
     "test": "nyc mocha tests/*.test.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "frontend-instrument": "nyc instrument .\\public\\js .\\public\\instrumented\\js &&copy .\\public\\*.html .\\public\\instrumented\\ && copy .\\public\\images.\\public\\instrumented\\ && copy .\\public\\css .\\public\\instrumented\\ && del.\\coverage-frontend\\*.json",
+    "frontend-report": "nyc report --reporter html --reporter text -t coverage-frontend--report-dir coverage-frontend/summary"
+
   },
   "author": "",
   "license": "ISC",
