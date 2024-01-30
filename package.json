@@ -6,20 +6,16 @@
   "nyc": {
     "include": [
       "utils/UserUtil.js",
-      "tests/userTests.test.js",
-      "models/User.js",
-      "utils/users.json",
+
       "utils/EndOfDay.js",
       "utils/GetProfile.js",
-      "utils/EditProfile.js",
-      "tests/deleteUser.test.js",
-      "tests/timeIn.test.js",
-      "public/**/ryan.js"
+      "utils/EditProfile.js"
+
       
     ],
     "exclude": [],
     "reporter": [
-      "html", "text"
+      "text-summary"
     ],
     "all": true,
     "check-coverage": true,
