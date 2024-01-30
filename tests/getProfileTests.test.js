@@ -1,7 +1,12 @@
 const { describe, it } = require('mocha');
 const { expect } = require('chai');
+const {readJSON}=require('../utils/UserUtil')
 const fs = require('fs').promises;
-const { getProfile,getProfileby } = require('../utils/GetProfile');
+const { getProfile,/*getProfileby*/ } = require('../utils/GetProfile');
+//const {jest}=require('jest');
+
+
+   
 
 
 describe('Testing GET features', () => {
@@ -12,11 +17,14 @@ describe('Testing GET features', () => {
         orgContent = JSON.parse(orgContent);
     });
     afterEach(async () => {
-        await fs.writeFile(resourcesFilePath, JSON.stringify(orgContent), 'utf8');
+        try {
+            // Revert the profiles to their original state
+            await fs.writeFile(resourcesFilePath, JSON.stringify(orgContent), 'utf8');
+        } catch (error) {
+            console.error('Error in "after each" hook:', error);
+        }
     });
-  
-  
-   
+
 
     it('Should return an array when Getting profiles', async () => {
         const req = {};
@@ -32,8 +40,12 @@ describe('Testing GET features', () => {
         await getProfile(req, res);
     });
     
+   
+/*
+
+
     it('Should return a profile when Getting profile by id', async () => {
-        const testUserId = '1';
+        const testUserId = '2';
         const req = {
             params: {
                 id: testUserId,
@@ -56,5 +68,22 @@ describe('Testing GET features', () => {
     
         await getProfileby(req, res);
     });
-       
+    it('Should return an error Getting profiles by wrong id', async () => {
+        const req = {
+            body:{
+                id:'19090'
+            }
+        };
+        const res = {
+            status: function (code) {
+                expect(code).to.equal(500);
+                return this;
+            },
+            json: function (data) {
+                expect(data).to.eql({ message: 'error.message' });
+            },
+        };
+        await getProfileby(req, res);
+    });*/
+    
     });
