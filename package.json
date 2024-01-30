@@ -14,13 +14,13 @@
       "utils/EditProfile.js",
       "tests/deleteUser.test.js",
       "tests/timeIn.test.js",
-      "jasper-UITest.test.js"
-,
-      "public/**/ryan.js"
+      "jasper-UITest.test.js",
+      "index.js"
+     
     ],
     "exclude": [],
     "reporter": [
-      "text-summary"
+      "html","text"
     ],
     "all": true,
     "check-coverage": true,
