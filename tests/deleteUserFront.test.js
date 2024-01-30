@@ -38,12 +38,37 @@ describe('Delete User Tests', function () {
         // Verify the alert text to confirm successful deletion
         expect(alertText).to.include('User deleted successfully'); // Replace with the actual success message
 
+        await driver.navigate().refresh();
+
+        // Wait for the table to load again
+        await driver.wait(until.elementLocated(By.css('table.table')));
+
+
+
         // Verify the user 'Edward' is no longer in the table
         const userRowsAfterDeletion = await driver.findElements(By.xpath("//tr[td[contains(text(), 'edward')]]"));
         expect(userRowsAfterDeletion.length).to.equal(0, 'User Edward should be deleted from the table.');
 
         // Optionally, you may need to wait for any asynchronous updates that occur after deletion
     });
+
+    afterEach(async function () {
+        await driver.executeScript('return window.__coverage__;').then(async (coverageData) => {
+        if (coverageData) {
+        // Save coverage data to a file
+        await fs.writeFile('coverage-frontend/coverage'+ counter++ + '.json',
+        JSON.stringify(coverageData), (err) => {
+        if (err) {
+        console.error('Error writing coverage data:', err);
+        } else {
+        console.log('Coverage data written to coverage.json');
+        }
+        });
+        }
+        });
+        });
+
+
 
     after(() => driver && driver.quit());
 });
