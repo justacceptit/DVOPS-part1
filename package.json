@@ -14,12 +14,17 @@
       "utils/EditProfile.js",
       "tests/deleteUser.test.js",
       "tests/timeIn.test.js",
-      "public/**/*.js"
-      
+      "jasper-UITest.test.js",
+      "public/**/ryan.js",
+      "public/**/login.js",
+      "public/**/register.js",
+      "public/**/eod.js",
+      "public/**/home.js"
+
     ],
     "exclude": [],
     "reporter": [
-      "html", "text"
+      "text-summary"
     ],
     "all": true,
     "check-coverage": true,
@@ -31,7 +36,10 @@
   "scripts": {
 
     "test": "nyc mocha tests/*.test.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "frontend-instrument": "nyc instrument .\\public\\js .\\public\\instrumented\\js && copy .\\public\\*.html .\\public\\instrumented\\ && copy .\\public\\images.\\public\\instrumented\\ && copy .\\public\\css .\\public\\instrumented\\ && del.\\coverage-frontend\\*.json",
+"frontend-report": "nyc report --reporter html --reporter text -t coverage-frontend --report-dir coverage-frontend/summary"
+
 
   },
   "author": "",
@@ -44,8 +52,6 @@
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "mocha": "^10.2.0",
-    "ncp": "^2.0.0",
-    "nyc": "^15.1.0",
-    "selenium-webdriver": "^4.17.0"
+    "nyc": "^15.1.0"
   }
 }
