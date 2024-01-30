@@ -19,6 +19,7 @@ function register() {
       console.log(response)
       if (response.message == undefined) {
         window.location.href = 'index.html';
+        console.log('no')
       } else {
         document.getElementById("error").innerHTML = 'Authentication failed!';
       }
