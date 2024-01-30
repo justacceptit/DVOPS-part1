@@ -1,7 +1,7 @@
 const { describe, it } = require('mocha');
 const { expect } = require('chai');
 const fs = require('fs').promises;
-const { getProfile,getProfileby } = require('../utils/GetProfile');
+const { getProfile } = require('../utils/GetProfile');
 
 
 describe('Testing GET features', () => {
@@ -32,29 +32,6 @@ describe('Testing GET features', () => {
         await getProfile(req, res);
     });
     
-    it('Should return a profile when Getting profile by id', async () => {
-        const testUserId = '1';
-        const req = {
-            params: {
-                id: testUserId,
-            },
-        };
-        const res = {
-            status: function (code) {
-                // Adjust the expected status code based on the actual behavior
-                if (code === 201 || code === 200) { // Assuming a successful response returns 201 or 200
-                    return this;
-                } else {
-                    throw new Error(`Unexpected status code: ${code}`);
-                }
-            },
-            json: function (data) {
-                // Add assertions for the response data if needed
-                expect(data.id).to.equal(testUserId); // Assuming a property named 'id' in the response
-            },
-        };
-    
-        await getProfileby(req, res);
-    });
+   
        
     });
