@@ -17,9 +17,9 @@ const{editProfile}=require('./utils/EditProfile')
 app.put('/edit-profile/:name',editProfile);
 const { EndOfDay } = require('./utils/EndOfDay');
 app.put('/eod',EndOfDay);
-const { getProfile, getProfileby } = require('./utils/GetProfile');
+const { getProfile } = require('./utils/GetProfile');
 app.get('/get-profile',getProfile);
-app.get('/get-profile-by/:id',getProfileby);
+
 
 
 const { deleteUser, register, login, updateUserTime, updateUserTimeOut } = require('./utils/UserUtil');
