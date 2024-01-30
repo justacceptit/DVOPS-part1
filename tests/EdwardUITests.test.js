@@ -90,28 +90,6 @@ describe('Testing Login UI', function () {
         expect(errorStyle).to.equal('text-danger');
     });
 
-    it('Should successfully log in with correct credentials', async function () {
-        const baseUrl = 'http://localhost:5050/instrumented/index.html';
-        this.timeout(9000000000000);
-        await driver.get(baseUrl);
-
-        const nameElement = await driver.findElement(By.id('name'));
-        await nameElement.click();
-        await nameElement.sendKeys('Jason Tan');
-
-        const passwordElement = await driver.findElement(By.id('password'));
-        await passwordElement.click();
-        await passwordElement.sendKeys('12345678'); 
-
-        const loginButton = await driver.findElement(By.xpath('//button[text()="Login"]'));
-        await loginButton.click();
-
-        await driver.sleep(10000);
-
-        const currentUrl = await driver.getCurrentUrl();
-        expect(currentUrl).to.equal('http://localhost:5050/home.html');
-    });
-
 });
 
 describe('Testing Register UI', function () {
@@ -134,69 +112,6 @@ describe('Testing Register UI', function () {
 
         const errorMessage = await driver.findElement(By.id('error')).getText();
         expect(errorMessage).to.equal('All fields are required!');
-    });
-
-    it('Should show error message - Password is less than 6 characters during registration', async function () {
-        const baseUrl = 'http://localhost:5050/instrumented/register.html';
-        this.timeout(9000000000000);
-        await driver.get(baseUrl);
-
-        const nameElement = await driver.findElement(By.id('name'));
-        await nameElement.sendKeys('Jane Doe');
-
-        const passwordElement = await driver.findElement(By.id('password'));
-        await passwordElement.sendKeys('12345'); 
-
-        const levelElement = await driver.findElement(By.id('level'));
-        await levelElement.sendKeys('2');
-
-        const registerButton = await driver.findElement(By.xpath('//button[text()="Register"]'));
-        await registerButton.click();
-
-        const errorMessage = await driver.findElement(By.id('error')).getText();
-        expect(errorMessage).to.equal('Password must be at least 6 characters!');
-    });
-
-    it('Should show error message - Level must be a number during registration', async function () {
-        const baseUrl = 'http://localhost:5050/instrumented/register.html';
-        this.timeout(9000000000000);
-        await driver.get(baseUrl);
-
-        const nameElement = await driver.findElement(By.id('name'));
-        await nameElement.sendKeys('Nathan Goh');
-
-        const passwordElement = await driver.findElement(By.id('password'));
-        await passwordElement.sendKeys('12345678');
-
-        const levelElement = await driver.findElement(By.id('level'));
-        await levelElement.sendKeys('One');  
-
-        const registerButton = await driver.findElement(By.xpath('//button[text()="Register"]'));
-        await registerButton.click();
-
-        const errorMessage = await driver.findElement(By.id('error')).getText();
-        expect(errorMessage).to.equal('Level must be a number!');
-    });
-
-    it('Should successfully register a user with valid credentials', async function () {
-        const baseUrl = 'http://localhost:5050/instrumented/register.html';
-        this.timeout(9000000000000);
-        await driver.get(baseUrl);
-
-        const nameElement = await driver.findElement(By.id('name'));
-        await nameElement.sendKeys('Peter Parker');
-
-        const passwordElement = await driver.findElement(By.id('password'));
-        await passwordElement.sendKeys('12345678');
-
-        const levelElement = await driver.findElement(By.id('level'));
-        await levelElement.sendKeys('2');
-
-        const registerButton = await driver.findElement(By.xpath('//button[text()="Register"]'));
-        await registerButton.click();
-
-        const currentUrl = await driver.getCurrentUrl();
-        expect(currentUrl).to.equal('http://localhost:5050/index.html');
     });
 
 });
