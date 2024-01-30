@@ -15,7 +15,6 @@
       "tests/deleteUser.test.js",
       "tests/timeIn.test.js",
       "public/**/ryan.js"
-      
     ],
     "exclude": [],
     "reporter": [
