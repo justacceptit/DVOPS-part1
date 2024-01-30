@@ -6,7 +6,7 @@ const fs =require('fs').promises;
 
 async function editProfile(req,res){
     try{
-    
+   // const id=req.params.id;
     const name = req.body.name;
     const password =req.body.password;
     const level =req.body.level;
@@ -18,7 +18,7 @@ async function editProfile(req,res){
     for(var i=0;i<allProfile.length;i++){
         var curcurrProfile =allProfile[i];
         if(curcurrProfile.name==name){
-            
+            //allProfile[i].id=id;
             allProfile[i].name=name;
             allProfile[i].password=password;
             allProfile[i].level=level;
@@ -38,12 +38,10 @@ async function editProfile(req,res){
         return res.status(201).json({message:'Profile modified successfully!'});
         
     }
-   else{
-        return res.status(500).json({message:'Error occured,Unable to edit'});
-    }
+ 
    
 }catch(error){
-return res.status(500).json({message: error.message});
+return res.status(500).json({message:'Error occured,Unable to edit'});
 }
 }
 module.exports={
