@@ -8,8 +8,7 @@
       "utils/UserUtil.js",
       "utils/EndOfDay.js",
       "utils/GetProfile.js",
-      "utils/EditProfile.js",
-      "./public/**/*.js"
+      "utils/EditProfile.js"
     ],
     "exclude": [],
     "reporter": [
@@ -23,7 +22,7 @@
     "statements": 80
   },
   "scripts": {
-    "test": "nyc mocha tests/deleteUserFront.test.js",
+    "test": "nyc mocha tests/*.test.js",
     "start": "node index.js",
     "frontend-instrument": "nyc instrument .\\public\\js .\\public\\instrumented\\js && copy .\\public\\*.html .\\public\\instrumented\\ && copy .\\public\\images.\\public\\instrumented\\ && copy .\\public\\css .\\public\\instrumented\\ && del.\\coverage-frontend\\*.json",
     "frontend-report": "nyc report --reporter html --reporter text -t coverage-frontend --report-dir coverage-frontend/summary"
