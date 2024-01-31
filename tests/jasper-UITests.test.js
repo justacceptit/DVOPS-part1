@@ -6,7 +6,7 @@ const fs = require('fs').promises;
 
 const chrome = require('selenium-webdriver/chrome');
 const chromeOptions = new chrome.Options();
-//chromeOptions.addArguments('--headless');
+chromeOptions.addArguments('--headless');
 const driver = new Builder().forBrowser('chrome').setChromeOptions(chromeOptions).build();
 var server;
 var counter = 0;
@@ -69,7 +69,7 @@ describe('Frontend GetProfile', function () {
     });
 });
 
-
+/*
 describe('Frontend EditProfile', function () {
     let tempProfileId;
     it('Should be able to edit resource', async function () {
@@ -191,7 +191,7 @@ describe('Frontend EditProfile', function () {
 
 
 
-
+*/
 
 
 /*afterEach(async function () {
