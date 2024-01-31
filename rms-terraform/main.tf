@@ -23,7 +23,7 @@ default_node_pool {
     vm_size = "Standard_DS2_v2"
 }
 service_principal {
-    client_id = "f6053be3-5d52-476c-956a-1479b38ead6e"
-    client_secret = "jXV8Q~KoCOnkPb0G~YMBiru.5IwrKwBgOCcvlbVg"
+    client_id = "db38f2ea-7803-465d-8ea5-3f006db84950"
+    client_secret = "UvR8Q~o2x6Tp-6fuI_IjOsKbxcPxuYj7IMrOxbQo"
     }
 }
