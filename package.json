@@ -8,16 +8,12 @@
       "utils/UserUtil.js",
       "utils/EndOfDay.js",
       "utils/GetProfile.js",
-      "utils/EditProfile.js",
-      "tests/deleteUser.test.js",
-      "tests/timeIn.test.js",
-      "jasper-UITest.test.js",
-      "public/**/ryan.js"
+      "utils/EditProfile.js"
+     
     ],
     "exclude": [],
     "reporter": [
-      "html",
-      "text"
+      "text-summary"
 
     ],
     "all": true,
