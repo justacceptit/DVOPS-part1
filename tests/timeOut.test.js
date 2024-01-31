@@ -1,4 +1,4 @@
-/*const fs = require('fs').promises;
+const fs = require('fs').promises;
 const { updateUserTimeOut, readJSON } = require('../utils/UserUtil'); // Adjust the path as needed
 const { expect } = require('chai');
 
@@ -165,4 +165,3 @@ describe('Testing Time Out function', function () {
     expect(res.responseData.message).to.equal('User not found!');
   });
 });
-*/
