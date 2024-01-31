@@ -8,8 +8,7 @@
       "utils/UserUtil.js",
       "utils/EndOfDay.js",
       "utils/GetProfile.js",
-      "utils/EditProfile.js",
-
+      "utils/EditProfile.js"
     ],
     "exclude": [],
     "reporter": [
