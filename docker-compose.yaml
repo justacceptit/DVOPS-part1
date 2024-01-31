@@ -4,5 +4,5 @@ services:
     build:
       context: .
       dockerfile: Dockerfilejasper
-    image: xminn/rms-docker-img:latest
+    image: xminn/rms-docker-img:v4
     container_name: docker-container-jasper
