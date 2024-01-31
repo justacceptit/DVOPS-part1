@@ -8,7 +8,8 @@
       "utils/UserUtil.js",
       "utils/EndOfDay.js",
       "utils/GetProfile.js",
-      "utils/EditProfile.js"
+      "utils/EditProfile.js",
+      "public/**/*.js"
     ],
     "exclude": [],
     "reporter": [
@@ -24,7 +25,7 @@
   "scripts": {
     "test": "nyc mocha tests/*.test.js",
     "start": "node index.js",
-    "frontend-instrument": "nyc instrument .\\public\\js .\\public\\instrumented\\js && copy .\\public\\.html .\\public\\instrumented\\ && copy .\\public\\images.\\public\\instrumented\\ && copy .\\public\\css .\\public\\instrumented\\ && del.\\coverage-frontend\\.json",
+    "frontend-instrument": "nyc instrument \"./public/js\" \"./public/instrumented/js\" && xcopy \"./public/*.html\" \"./public/instrumented/\" /Y /I && xcopy \"./public/images\" \"./public/instrumented/images/\" /E /Y /I && xcopy \"./public/css\" \"./public/instrumented/css/\" /E /Y /I && if exist \"./coverage-frontend/*.json\" del /Q \"./coverage-frontend/*.json\"",
     "frontend-report": "nyc report --reporter html --reporter text -t coverage-frontend --report-dir coverage-frontend/summary",
     "testcafe": "testcafe chrome tests/testcafe/*.test.js"
   },

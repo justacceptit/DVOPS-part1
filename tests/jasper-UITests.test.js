@@ -194,11 +194,11 @@ describe('Frontend EditProfile', function () {
 */
 
 
-/*afterEach(async function () {
+afterEach(async function () {
     await driver.executeScript('return window.__coverage__;').then(async (coverageData) => {
         if (coverageData) {
             // Save coverage data to a file
-            await fs.writeFile('coverage-frontend/coverage' + counter++ + '.json',
+            await fs.writeFile('coverage-frontend/coveragemingnan' + counter++ + '.json',
                 JSON.stringify(coverageData), (err) => {
                     if (err) {
                         console.error('Error writing coverage data:', err);
@@ -208,7 +208,7 @@ describe('Frontend EditProfile', function () {
                 });
         }
     });
-});*/
+});
 after(async function () {
     await driver.quit();
     await server.close();
