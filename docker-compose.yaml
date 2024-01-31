@@ -1,8 +1,8 @@
 version: '3'
 services:
-  jasper-build-rms:
+  build-rms:
     build:
       context: .
       dockerfile: Dockerfile
     image: xminn/rms-docker-img-jasper:v4
-    container_name: docker-container-jasper
+    container_name: workentry-docker-container
