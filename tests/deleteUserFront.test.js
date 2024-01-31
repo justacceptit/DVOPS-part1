@@ -12,7 +12,7 @@ describe('Delete User Tests', function () {
     before(async function () {
 
 
-        driver = await new Builder().forBrowser('chrome').build();
+        driver = await new Builder().forBrowser('firefox').build();
         await driver.get(url);
     });
 

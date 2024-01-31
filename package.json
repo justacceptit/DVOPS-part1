@@ -43,5 +43,8 @@
     "nyc": "^15.1.0",
     "selenium-webdriver": "^4.17.0",
     "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "geckodriver": "^4.3.1"
   }
 }
