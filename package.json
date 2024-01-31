@@ -9,10 +9,7 @@
       "utils/EndOfDay.js",
       "utils/GetProfile.js",
       "utils/EditProfile.js",
-      "tests/deleteUser.test.js",
-      "tests/timeIn.test.js",
-      "jasper-UITest.test.js",
-      "public/**/ryan.js"
+
     ],
     "exclude": [],
     "reporter": [
