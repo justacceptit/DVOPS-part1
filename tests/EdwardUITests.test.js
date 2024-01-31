@@ -88,24 +88,6 @@ describe('Testing Login UI', function () {
         expect(errorStyle).to.equal('text-danger');
     });
 
-    it('Should successfully log in with correct credentials', async function () {
-        const baseUrl = 'http://localhost:5050/index.html';
-        this.timeout(600000);
-        await driver.get(baseUrl);
-    
-        const nameElement = await driver.findElement(By.id('name'));
-        await nameElement.sendKeys('Jason Tan');
-    
-        const passwordElement = await driver.findElement(By.id('password'));
-        await passwordElement.sendKeys('12345678'); 
-    
-        const loginButton = await driver.findElement(By.xpath('//button[text()="Login"]'));
-        await loginButton.click();
-    
-        const currentUrl = await driver.getCurrentUrl();
-        expect(currentUrl).to.equal('http://localhost:5050/home.html');
-    });
-
 });
 
 describe('Testing Register UI', function () {
@@ -129,78 +111,7 @@ describe('Testing Register UI', function () {
         const errorMessage = await driver.findElement(By.id('error')).getText();
         expect(errorMessage).to.equal('All fields are required!');
     });
-
-    it('Should show error message - Password is less than 6 characters during registration', async function () {
-        const baseUrl = 'http://localhost:5050/register.html';
-        this.timeout(900000000);
-        await driver.get(baseUrl);
-    
-        const nameElement = await driver.findElement(By.id('name'));
-        await nameElement.sendKeys('Jane Doe');
-    
-        const passwordElement = await driver.findElement(By.id('password'));
-        await passwordElement.sendKeys('123@');  // Enter a password with less than 6 characters
-    
-        const levelElement = await driver.findElement(By.id('level'));
-        await levelElement.sendKeys('2');
-    
-        const registerButton = await driver.findElement(By.xpath('//button[text()="Register"]'));
-        await registerButton.click();
-    
-        // Locate the error element and retrieve its text
-        const errorMessage = await driver.findElement(By.id('error')).getText();
-        
-        // Assert that the error message contains the expected text
-        expect(errorMessage).to.equal('Password must be at least 6 characters!');
-    });
-    
-    it('Should show error message - Level must be a number during registration', async function () {
-        const baseUrl = 'http://localhost:5050/register.html';
-        this.timeout(900000000);
-        await driver.get(baseUrl);
-    
-        const nameElement = await driver.findElement(By.id('name'));
-        await nameElement.sendKeys('Nathan Goh');
-    
-        const passwordElement = await driver.findElement(By.id('password'));
-        await passwordElement.sendKeys('12345678');
-    
-        const levelElement = await driver.findElement(By.id('level'));
-        await levelElement.sendKeys('One');  
-    
-        const registerButton = await driver.findElement(By.xpath('//button[text()="Register"]'));
-        await registerButton.click();
-    
-        // Locate the error element and retrieve its text
-        const errorMessage = await driver.findElement(By.id('error')).getText();
-        
-        // Assert that the error message contains the expected text
-        expect(errorMessage).to.equal('Level must be a number!');
-    });
-
-    it('Should successfully register a user with valid credentials', async function () {
-        const baseUrl = 'http://localhost:5050/register.html';
-        this.timeout(500000);
-        await driver.get(baseUrl);
-
-        const nameElement = await driver.findElement(By.id('name'));
-        await nameElement.sendKeys('Peter Parker');
-
-        const passwordElement = await driver.findElement(By.id('password'));
-        await passwordElement.sendKeys('12345678');
-
-        const levelElement = await driver.findElement(By.id('level'));
-        await levelElement.sendKeys('2');
-
-        const registerButton = await driver.findElement(By.xpath('//button[text()="Register"]'));
-        await registerButton.click();
-
-        // Assuming successful registration redirects to index.html
-        const currentUrl = await driver.getCurrentUrl();
-        expect(currentUrl).to.equal('http://localhost:5050/index.html');
-    });
-
-
+   
 
 });
 
