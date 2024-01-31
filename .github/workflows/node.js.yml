@@ -3,7 +3,7 @@ name: Automatic Testing for WorkEntry
 on: 
   push: 
     branches: 
-      - main # Workflow will be triggered whenever there is a push in main branch
+      - ryan-cicdworkflow # Workflow will be triggered whenever there is a push in main branch
 jobs: 
   test: 
     runs-on: ubuntu-latest
