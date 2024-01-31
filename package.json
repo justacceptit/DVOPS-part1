@@ -42,6 +42,7 @@
     "ncp": "^2.0.0",
     "nyc": "^15.1.0",
     "selenium-webdriver": "^4.17.0",
-    "winston": "^3.11.0"
+    "winston": "^3.11.0",
+    "sinon":"17.0.1"
   }
 }
