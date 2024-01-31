@@ -133,3 +133,4 @@ dist
 README.md
 
 /workentry-terraform/.terraform
+node_modules/

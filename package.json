@@ -9,12 +9,10 @@
       "utils/EndOfDay.js",
       "utils/GetProfile.js",
       "utils/EditProfile.js"
-     
     ],
     "exclude": [],
     "reporter": [
       "text-summary"
-
     ],
     "all": true,
     "check-coverage": true,
@@ -27,11 +25,13 @@
     "test": "nyc mocha tests/*.test.js",
     "start": "node index.js",
     "frontend-instrument": "nyc instrument .\\public\\js .\\public\\instrumented\\js && copy .\\public\\.html .\\public\\instrumented\\ && copy .\\public\\images.\\public\\instrumented\\ && copy .\\public\\css .\\public\\instrumented\\ && del.\\coverage-frontend\\.json",
-    "frontend-report": "nyc report --reporter html --reporter text -t coverage-frontend --report-dir coverage-frontend/summary"
+    "frontend-report": "nyc report --reporter html --reporter text -t coverage-frontend --report-dir coverage-frontend/summary",
+    "testcafe": "testcafe chrome tests/testcafe/*.test.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@jridgewell/gen-mapping": "^0.3.3",
     "body-parser": "^1.20.2",
     "chai": "^4.3.10",
     "chromedriver": "^120.0.2",
@@ -42,7 +42,8 @@
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
     "selenium-webdriver": "^4.17.0",
-    "winston": "^3.11.0",
-    "sinon": "^17.0.1"
+    "sinon": "^17.0.1",
+    "testcafe": "^3.5.0",
+    "winston": "^3.11.0"
   }
 }
