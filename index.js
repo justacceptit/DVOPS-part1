@@ -15,7 +15,7 @@ app.use(express.static("./public"));
 
 
 const{editProfile}=require('./utils/EditProfile')
-app.put('/edit-profile/:name',editProfile);
+app.put('/edit-profile',editProfile);
 const { EndOfDay } = require('./utils/EndOfDay');
 app.put('/eod',EndOfDay);
 const { getProfile } = require('./utils/GetProfile');

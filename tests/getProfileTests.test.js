@@ -1,7 +1,8 @@
 const { describe, it } = require('mocha');
 const { expect } = require('chai');
+const {readJSON}=require('../utils/UserUtil')
 const fs = require('fs').promises;
-const { getProfile } = require('../utils/GetProfile');
+const { getProfile} = require('../utils/GetProfile');
 
 
 describe('Testing GET features', () => {
@@ -12,11 +13,14 @@ describe('Testing GET features', () => {
         orgContent = JSON.parse(orgContent);
     });
     afterEach(async () => {
-        await fs.writeFile(resourcesFilePath, JSON.stringify(orgContent), 'utf8');
+        try {
+            // Revert the profiles to their original state
+            await fs.writeFile(resourcesFilePath, JSON.stringify(orgContent), 'utf8');
+        } catch (error) {
+            console.error('Error in "after each" hook:', error);
+        }
     });
-  
-  
-   
+
 
     it('Should return an array when Getting profiles', async () => {
         const req = {};
@@ -33,5 +37,4 @@ describe('Testing GET features', () => {
     });
     
    
-       
     });
