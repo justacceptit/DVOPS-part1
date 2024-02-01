@@ -340,6 +340,11 @@ function updateProfile(id) {
         document.getElementById("editMessage").setAttribute("class", "text-danger");
         return;
     }else
+    if (jsonData.level == "" ) {
+        document.getElementById("editMessage").innerHTML = 'Please Input a proper Level!';
+        document.getElementById("editMessage").setAttribute("class", "text-danger");
+        return;
+    }else
     if (jsonData.date == "" ) {
         document.getElementById("editMessage").innerHTML = 'Please Input a proper Date!';
         document.getElementById("editMessage").setAttribute("class", "text-danger");
