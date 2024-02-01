@@ -4,5 +4,5 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: edwarddvops/rms-docker-img-edward:latest
+    image: edwarddvops/rms-docker-img-edward:v3
     container_name: workentry-docker-container
