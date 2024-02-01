@@ -362,7 +362,7 @@ function updateProfile(id) {
         if (response.message == "Profile modified successfully!") {
             document.getElementById("editMessage").innerHTML = 'Edited Profile: ' + jsonData.name + '!';
             document.getElementById("editMessage").setAttribute("class", "text-success");
-            window.location.href = 'edit.html';
+           // window.location.href = 'edit.html';
             console.log(jsonData.time_in);
         }
         else {

@@ -16,6 +16,7 @@
       "tests/timeIn.test.js",
       "jasper-UITest.test.js",
       "index.js"
+      
     ],
     "exclude": [],
     "reporter": [

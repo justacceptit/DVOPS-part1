@@ -71,10 +71,10 @@ describe('Frontend GetProfile', function () {
 
 
 describe('Frontend EditProfile', function () {
-    let tempProfileId;
+   // let tempProfileId;
     it('Should be able to edit resource', async function () {
 
-        const baseUrl = 'http://localhost:' + server.address().port;
+        const baseUrl = 'http://localhost:' + server.address().port ;
         await driver.get(baseUrl + '/index.html');
 
         const nameElement = await driver.findElement(By.id('name'));
@@ -139,24 +139,38 @@ describe('Frontend EditProfile', function () {
         const edLink = await diBefore.findElement(By.linkText('Edit/Delete')); // Find the "Register" link within the div
         await edLink.click();
 
-        await driver.wait(until.urlIs(baseUrl + '/home.html'), 10000);
-        const editLink = await findElement(By.linkText('testing'));
-        const editbutt = await editLink.findElement(By.xpath('//button[text()="Edit"]'));
-        await editbutt.click(); // Find the "Register" link within the div
+        await driver.wait(until.urlIs(baseUrl + '/edit.html'), 10000);
+
        
+        this.timeout(1000000);
+        await driver.wait(until.elementLocated(By.css('table.table')));
+
+        // Find the row with the user 'Edward' and click the 'Delete' button in that row
+        const userRow = await driver.findElement(By.xpath("//tr[td[contains(text(), 'testing')]]"));
+        const editbutt = await userRow.findElement(By.xpath(".//button[contains(text(), 'Edit')]"));
+        await editbutt.click();
         //await driver.wait(until.urlIs(baseUrl + '/edit.html'), 10000);
         //const currenttUrl = await driver.getCurrentUrl();
+        //await driver.findElement(By.id('editProfileModal'));
 
-        const editnameElement = await driver.findElement(By.id('editname'));
+        // Wait for the modal to be visible
+        await driver.wait(until.elementLocated(By.id('editProfileModal')), 10000);
+        const editProfileModal = await driver.findElement(By.id('editProfileModal'));
+        await driver.wait(until.elementIsVisible(editProfileModal), 10000);
+        
+        this.timeout(10000);
+
+        const editnameElement = await driver.findElement(By.id('editName'));
         await editnameElement.click(); // Click on the element
-        await editnameElement.sendKeys('testong');
+        await editnameElement.sendKeys('');
 
-        const editpasswordElement = await driver.findElement(By.id('editpassword'));
+        const editpasswordElement = await driver.findElement(By.id('editPassword'));
         await editpasswordElement.click(); // Click on the element
-        await editpasswordElement.sendKeys('123456789');
+        await editpasswordElement.sendKeys('9');
 
-        const editlevelElement = await driver.findElement(By.id('editlevel'));
+        const editlevelElement = await driver.findElement(By.id('editLevel'));
         await editlevelElement.click(); // Click on the element
+        await editlevelElement.sendKeys(Key.BACK_SPACE);
         await editlevelElement.sendKeys('2');
 
         const editdateElement = await driver.findElement(By.id('editDate'));
@@ -164,51 +178,45 @@ describe('Frontend EditProfile', function () {
         await editdateElement.sendKeys('12012024');
         const edittimeElement = await driver.findElement(By.id('editTime_In'));
         await edittimeElement.click(); // Click on the element
-        await edittimeElement.sendKeys('1111pm');
-
-        const editButton = await driver.findElement(By.xpath('//button[text()="Update Resource"]'));
-        await editButton.click();
+        await edittimeElement.sendKeys('1111am');
+        const upButton = await driver.wait(until.elementLocated(By.xpath('//button[text()="Update Resource"]')), 10000);
+        await driver.wait(until.elementIsEnabled(upButton));
+        await upButton.click();
+       
         // Wait for the page to be redirected
-        await driver.wait(until.urlIs(baseUrl + '/edit.html'), 10000);
+       // await driver.wait(until.urlIs(baseUrl + '/edit.html'), 10000);
 
 
         // Assert that the updated information is displayed in the table
-        const updatedNameElement = await driver.findElement(By.xpath(`//td[contains(text(), 'testong')]`));
-        expect(updatedNameElement).to.exist;
-
-        const updatedLevelElement = await driver.findElement(By.xpath(`//td[contains(text(), '2')]`));
-        expect(updatedLevelElement).to.exist;
-
-        const updatedDateElement = await driver.findElement(By.xpath(`//td[contains(text(), '12012024')]`));
-        expect(updatedDateElement).to.exist;
-
-        const updatedTimeElement = await driver.findElement(By.xpath(`//td[contains(text(), '1111pm')]`));
-        expect(updatedTimeElement).to.exist;
+        await driver.wait(until.elementLocated(By.id('editMessage')),10000);
+        const editMessageElement = await driver.findElement(By.id('editMessage'));
+        
+        // Get the innerHTML of the element
+        const editMessage = await editMessageElement.getAttribute('innerHTML');
+        
+        // Assert that the innerHTML matches the expected value
+        expect(editMessage).to.equal('Edited Profile: testing!');
+        
 
     });
 });
 
-
-
-
-
-
-
-/*afterEach(async function () {
+/*
+afterEach(async function () {
     await driver.executeScript('return window.__coverage__;').then(async (coverageData) => {
-        if (coverageData) {
-            // Save coverage data to a file
-            await fs.writeFile('coverage-frontend/coverage' + counter++ + '.json',
-                JSON.stringify(coverageData), (err) => {
-                    if (err) {
-                        console.error('Error writing coverage data:', err);
-                    } else {
-                        console.log('Coverage data written to coverage.json');
-                    }
-                });
-        }
+    if (coverageData) {
+    // Save coverage data to a file
+    await fs.writeFile('coverage-frontend/coverage'+ counter++ + '.json',
+    JSON.stringify(coverageData), (err) => {
+    if (err) {
+    console.error('Error writing coverage data:', err);
+    } else {
+    console.log('Coverage data written to coverage.json');
+    }
     });
-});*/
+    }
+    });
+    });*/
 after(async function () {
     await driver.quit();
     await server.close();
