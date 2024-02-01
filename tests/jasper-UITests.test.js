@@ -4,10 +4,12 @@ const { describe, it } = require('mocha');
 const { expect } = require('chai');
 const fs = require('fs').promises;
 
-const chrome = require('selenium-webdriver/chrome');
-const chromeOptions = new chrome.Options();
+
+//const chrome = require('selenium-webdriver/chrome');
+//const chromeOptions = new chrome.Options();
 //chromeOptions.addArguments('--headless');
-const driver = new Builder().forBrowser('chrome').setChromeOptions(chromeOptions).build();
+//const driver = new Builder().forBrowser('firefox').build();//tried but my test case didnt work
+const driver = new Builder().forBrowser('MicrosoftEdge')./*setChromeOptions(chromeOptions).*/build();
 var server;
 var counter = 0;
 before(async function () {
