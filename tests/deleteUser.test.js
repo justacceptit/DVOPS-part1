@@ -1,5 +1,6 @@
 const fs = require('fs').promises;
-const { deleteUser,readJSON } = require('../utils/UserUtil'); // Adjust the path as needed
+const { readJSON } = require('../utils/UserUtil'); // Adjust the path as needed
+const { deleteUser} = require('../utils/ryanUtil'); // Adjust the path as needed
 const assert = require('assert');
 const chai = require('chai');
 const expect = chai.expect;

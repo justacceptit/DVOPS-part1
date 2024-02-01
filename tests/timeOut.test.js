@@ -1,5 +1,6 @@
 const fs = require('fs').promises;
-const { updateUserTimeOut, readJSON } = require('../utils/UserUtil'); // Adjust the path as needed
+const { updateUserTimeOut } = require('../utils/ryanUtil'); // Adjust the path as needed
+const { readJSON } = require('../utils/UserUtil');
 const { expect } = require('chai');
 
 describe('Testing Time Out function', function () {

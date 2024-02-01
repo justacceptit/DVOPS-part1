@@ -1,5 +1,6 @@
 const fs = require('fs').promises;
-const { updateUserTime, readJSON } = require('../utils/UserUtil'); // Adjust the path as needed
+const { updateUserTime,  } = require('../utils/ryanUtil');
+const { readJSON } = require('../utils/UserUtil'); // Adjust the path as needed
 const { expect } = require('chai');
 
 describe('Testing Time in function', function () {
@@ -140,7 +141,7 @@ describe('Testing Time in function', function () {
       });
 
       it('should record time within normal time clock range on "time in"', async function () {
-        const testUserId = '2'; // Replace with an actual user ID for your test
+        const testUserId = '696'; // Replace with an actual user ID for your test
     
         // Mock the request and response objects
         const req = {

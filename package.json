@@ -5,10 +5,9 @@
   "main": "index.js",
   "nyc": {
     "include": [
-      "utils/UserUtil.js",
-      "utils/EndOfDay.js",
-      "utils/GetProfile.js",
-      "utils/EditProfile.js"
+
+      "utils/ryanUtil.js"
+ 
      
     ],
     "exclude": [],

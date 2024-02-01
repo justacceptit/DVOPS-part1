@@ -23,7 +23,8 @@ app.get('/get-profile',getProfile);
 
 
 
-const { deleteUser, register, login, updateUserTime, updateUserTimeOut } = require('./utils/UserUtil');
+const { register, login,} = require('./utils/UserUtil');
+const {updateUserTime,updateUserTimeOut,deleteUser} = require('./utils/ryanUtil');
 
 
 
