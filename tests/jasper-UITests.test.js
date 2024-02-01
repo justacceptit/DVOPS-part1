@@ -6,7 +6,7 @@ const fs = require('fs').promises;
 
 const chrome = require('selenium-webdriver/chrome');
 const chromeOptions = new chrome.Options();
-chromeOptions.addArguments('--headless');
+//chromeOptions.addArguments('--headless');
 const driver = new Builder().forBrowser('chrome').setChromeOptions(chromeOptions).build();
 var server;
 var counter = 0;
