@@ -1,0 +1,8 @@
+version: '3'
+services:
+  build-rms:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: edwarddvops/rms-docker-img-edward:latest
+    container_name: workentry-docker-container
