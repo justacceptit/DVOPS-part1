@@ -74,7 +74,7 @@ h3{
     margin-bottom: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #5cb85c;
+    background-color: #1e00ff;
     color: white;
     font-size: 1em;
     cursor: pointer;
@@ -82,11 +82,11 @@ h3{
 }
 
 .user-time-container button:hover {
-    background-color: #4cae4c;
+    background-color: #1e00ff;
 }
 
 .user-time-container button:active {
-    background-color: #5cb85c;
+    background-color: #1e00ff;
 }
 
 .user-time-container button#timeOutBtn {
